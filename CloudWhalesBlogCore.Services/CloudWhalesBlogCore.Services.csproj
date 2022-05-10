@@ -1,11 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+	</PropertyGroup>
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.WindowsDesktop.App.WindowsForms" />
+	</ItemGroup>
+	<ItemGroup>
+		<Folder Include="IServices\" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="IServices\" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\CloudWhalesBlogCore.Shared\CloudWhalesBlogCore.Shared.csproj" />
+	</ItemGroup>
 
 </Project>

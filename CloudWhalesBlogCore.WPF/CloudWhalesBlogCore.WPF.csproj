@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspectInjector" Version="2.7.2" />
+    <PackageReference Include="Autofac" Version="6.3.0" />
+    <PackageReference Include="MaterialDesignColors" Version="2.0.7-ci172" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.6.0-ci172" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CloudWhalesBlogCore.Model\CloudWhalesBlogCore.Model.csproj" />
+    <ProjectReference Include="..\CloudWhalesBlogCore.Services\CloudWhalesBlogCore.Services.csproj" />
+  </ItemGroup>
+
+</Project>

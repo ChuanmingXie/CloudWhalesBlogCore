@@ -33,10 +33,17 @@ namespace CloudWhalesBlogCore.Win
             this.BtnWordPhotos = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.PanelCommonTools = new System.Windows.Forms.Panel();
+            this.TxtMessage = new System.Windows.Forms.TextBox();
+            this.CbxHandleType = new System.Windows.Forms.ComboBox();
+            this.lblrandomLine = new System.Windows.Forms.Label();
             this.lblOutputline1 = new System.Windows.Forms.Label();
+            this.BtnRandomPath = new System.Windows.Forms.Button();
             this.lblOutputDirectory = new System.Windows.Forms.Label();
+            this.LblSelectType = new System.Windows.Forms.Label();
+            this.lblClient = new System.Windows.Forms.Label();
             this.BtnOutputDirectory = new System.Windows.Forms.Button();
             this.lblOpenLine = new System.Windows.Forms.Label();
+            this.BtnProgressbar = new System.Windows.Forms.Button();
             this.lblOpenfile = new System.Windows.Forms.Label();
             this.lblCommon1 = new System.Windows.Forms.Label();
             this.BtnOpenFile = new System.Windows.Forms.Button();
@@ -52,11 +59,6 @@ namespace CloudWhalesBlogCore.Win
             this.lblExcelDirectoryline = new System.Windows.Forms.Label();
             this.lblExcelDirectory = new System.Windows.Forms.Label();
             this.BtnMergeDocument = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lblrandomLine = new System.Windows.Forms.Label();
-            this.BtnRandomPath = new System.Windows.Forms.Button();
-            this.lblClient = new System.Windows.Forms.Label();
-            this.BtnSaveToServer = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.ToolSLblHome = new System.Windows.Forms.ToolStripLabel();
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -76,7 +78,6 @@ namespace CloudWhalesBlogCore.Win
             this.PanelCommonTools.SuspendLayout();
             this.PanelClientTools.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.toolStripContainer2.ContentPanel.SuspendLayout();
@@ -86,11 +87,12 @@ namespace CloudWhalesBlogCore.Win
             // 
             // BtnWordPhotos
             // 
+            this.BtnWordPhotos.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.BtnWordPhotos.BackColor = System.Drawing.SystemColors.HotTrack;
             this.BtnWordPhotos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnWordPhotos.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BtnWordPhotos.ForeColor = System.Drawing.Color.White;
-            this.BtnWordPhotos.Location = new System.Drawing.Point(802, 56);
+            this.BtnWordPhotos.Location = new System.Drawing.Point(566, 505);
             this.BtnWordPhotos.Name = "BtnWordPhotos";
             this.BtnWordPhotos.Size = new System.Drawing.Size(196, 60);
             this.BtnWordPhotos.TabIndex = 0;
@@ -100,41 +102,93 @@ namespace CloudWhalesBlogCore.Win
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.PanelCommonTools, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.PanelClientTools, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 2);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 65.17467F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 34.82533F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1295, 916);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // PanelCommonTools
             // 
+            this.PanelCommonTools.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PanelCommonTools.Controls.Add(this.TxtMessage);
+            this.PanelCommonTools.Controls.Add(this.CbxHandleType);
+            this.PanelCommonTools.Controls.Add(this.lblrandomLine);
             this.PanelCommonTools.Controls.Add(this.lblOutputline1);
+            this.PanelCommonTools.Controls.Add(this.BtnRandomPath);
             this.PanelCommonTools.Controls.Add(this.lblOutputDirectory);
+            this.PanelCommonTools.Controls.Add(this.LblSelectType);
+            this.PanelCommonTools.Controls.Add(this.lblClient);
             this.PanelCommonTools.Controls.Add(this.BtnOutputDirectory);
             this.PanelCommonTools.Controls.Add(this.lblOpenLine);
+            this.PanelCommonTools.Controls.Add(this.BtnProgressbar);
+            this.PanelCommonTools.Controls.Add(this.BtnWordPhotos);
             this.PanelCommonTools.Controls.Add(this.lblOpenfile);
             this.PanelCommonTools.Controls.Add(this.lblCommon1);
             this.PanelCommonTools.Controls.Add(this.BtnOpenFile);
             this.PanelCommonTools.Controls.Add(this.BtnSplitExcel);
             this.PanelCommonTools.Controls.Add(this.BtnExcelPhotos);
-            this.PanelCommonTools.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelCommonTools.Location = new System.Drawing.Point(3, 3);
             this.PanelCommonTools.Name = "PanelCommonTools";
-            this.PanelCommonTools.Size = new System.Drawing.Size(1289, 360);
+            this.PanelCommonTools.Size = new System.Drawing.Size(1289, 590);
             this.PanelCommonTools.TabIndex = 2;
+            // 
+            // TxtMessage
+            // 
+            this.TxtMessage.Location = new System.Drawing.Point(815, 231);
+            this.TxtMessage.Multiline = true;
+            this.TxtMessage.Name = "TxtMessage";
+            this.TxtMessage.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.TxtMessage.Size = new System.Drawing.Size(406, 154);
+            this.TxtMessage.TabIndex = 8;
+            this.TxtMessage.Visible = false;
+            // 
+            // CbxHandleType
+            // 
+            this.CbxHandleType.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.CbxHandleType.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.CbxHandleType.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CbxHandleType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CbxHandleType.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.CbxHandleType.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CbxHandleType.ForeColor = System.Drawing.Color.White;
+            this.CbxHandleType.FormattingEnabled = true;
+            this.CbxHandleType.Items.AddRange(new object[] {
+            "混合导出",
+            "图表对应",
+            "表格导出",
+            "表对应图随机"});
+            this.CbxHandleType.Location = new System.Drawing.Point(206, 516);
+            this.CbxHandleType.Name = "CbxHandleType";
+            this.CbxHandleType.Size = new System.Drawing.Size(242, 39);
+            this.CbxHandleType.TabIndex = 7;
+            // 
+            // lblrandomLine
+            // 
+            this.lblrandomLine.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblrandomLine.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.lblrandomLine.ForeColor = System.Drawing.Color.Transparent;
+            this.lblrandomLine.Location = new System.Drawing.Point(206, 451);
+            this.lblrandomLine.Name = "lblrandomLine";
+            this.lblrandomLine.Size = new System.Drawing.Size(1015, 2);
+            this.lblrandomLine.TabIndex = 6;
+            this.lblrandomLine.Text = "定制功能";
             // 
             // lblOutputline1
             // 
+            this.lblOutputline1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblOutputline1.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.lblOutputline1.ForeColor = System.Drawing.Color.Transparent;
             this.lblOutputline1.Location = new System.Drawing.Point(204, 216);
@@ -143,8 +197,28 @@ namespace CloudWhalesBlogCore.Win
             this.lblOutputline1.TabIndex = 4;
             this.lblOutputline1.Text = "通用功能";
             // 
+            // BtnRandomPath
+            // 
+            this.BtnRandomPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnRandomPath.BackColor = System.Drawing.Color.Transparent;
+            this.BtnRandomPath.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.BtnRandomPath.FlatAppearance.BorderSize = 0;
+            this.BtnRandomPath.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnRandomPath.ForeColor = System.Drawing.Color.Black;
+            this.BtnRandomPath.Location = new System.Drawing.Point(206, 402);
+            this.BtnRandomPath.Name = "BtnRandomPath";
+            this.BtnRandomPath.Size = new System.Drawing.Size(1015, 46);
+            this.BtnRandomPath.TabIndex = 5;
+            this.BtnRandomPath.Text = "请选择补充随机图片的位置";
+            this.BtnRandomPath.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnRandomPath.UseVisualStyleBackColor = false;
+            this.BtnRandomPath.Click += new System.EventHandler(this.BtnRandomPath_Click);
+            // 
             // lblOutputDirectory
             // 
+            this.lblOutputDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblOutputDirectory.AutoSize = true;
             this.lblOutputDirectory.Location = new System.Drawing.Point(53, 175);
             this.lblOutputDirectory.Name = "lblOutputDirectory";
@@ -152,8 +226,32 @@ namespace CloudWhalesBlogCore.Win
             this.lblOutputDirectory.TabIndex = 3;
             this.lblOutputDirectory.Text = "保存位置";
             // 
+            // LblSelectType
+            // 
+            this.LblSelectType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.LblSelectType.AutoSize = true;
+            this.LblSelectType.Location = new System.Drawing.Point(53, 520);
+            this.LblSelectType.Name = "LblSelectType";
+            this.LblSelectType.Size = new System.Drawing.Size(110, 31);
+            this.LblSelectType.TabIndex = 1;
+            this.LblSelectType.Text = "选择类型";
+            // 
+            // lblClient
+            // 
+            this.lblClient.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblClient.AutoSize = true;
+            this.lblClient.Location = new System.Drawing.Point(55, 410);
+            this.lblClient.Name = "lblClient";
+            this.lblClient.Size = new System.Drawing.Size(110, 31);
+            this.lblClient.TabIndex = 1;
+            this.lblClient.Text = "定制功能";
+            // 
             // BtnOutputDirectory
             // 
+            this.BtnOutputDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnOutputDirectory.BackColor = System.Drawing.Color.Transparent;
             this.BtnOutputDirectory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.BtnOutputDirectory.FlatAppearance.BorderSize = 0;
@@ -170,6 +268,8 @@ namespace CloudWhalesBlogCore.Win
             // 
             // lblOpenLine
             // 
+            this.lblOpenLine.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblOpenLine.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.lblOpenLine.ForeColor = System.Drawing.Color.Transparent;
             this.lblOpenLine.Location = new System.Drawing.Point(204, 106);
@@ -178,8 +278,26 @@ namespace CloudWhalesBlogCore.Win
             this.lblOpenLine.TabIndex = 1;
             this.lblOpenLine.Text = "通用功能";
             // 
+            // BtnProgressbar
+            // 
+            this.BtnProgressbar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnProgressbar.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.BtnProgressbar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnProgressbar.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BtnProgressbar.ForeColor = System.Drawing.Color.White;
+            this.BtnProgressbar.Location = new System.Drawing.Point(815, 495);
+            this.BtnProgressbar.Name = "BtnProgressbar";
+            this.BtnProgressbar.Size = new System.Drawing.Size(196, 60);
+            this.BtnProgressbar.TabIndex = 0;
+            this.BtnProgressbar.Text = "测试进度条";
+            this.BtnProgressbar.UseVisualStyleBackColor = false;
+            this.BtnProgressbar.Visible = false;
+            this.BtnProgressbar.Click += new System.EventHandler(this.BtnProgressbar_Click);
+            // 
             // lblOpenfile
             // 
+            this.lblOpenfile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblOpenfile.AutoSize = true;
             this.lblOpenfile.Location = new System.Drawing.Point(53, 65);
             this.lblOpenfile.Name = "lblOpenfile";
@@ -189,6 +307,8 @@ namespace CloudWhalesBlogCore.Win
             // 
             // lblCommon1
             // 
+            this.lblCommon1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCommon1.AutoSize = true;
             this.lblCommon1.Location = new System.Drawing.Point(53, 292);
             this.lblCommon1.Name = "lblCommon1";
@@ -198,6 +318,8 @@ namespace CloudWhalesBlogCore.Win
             // 
             // BtnOpenFile
             // 
+            this.BtnOpenFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnOpenFile.BackColor = System.Drawing.Color.Transparent;
             this.BtnOpenFile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.BtnOpenFile.FlatAppearance.BorderSize = 0;
@@ -214,6 +336,7 @@ namespace CloudWhalesBlogCore.Win
             // 
             // BtnSplitExcel
             // 
+            this.BtnSplitExcel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.BtnSplitExcel.BackColor = System.Drawing.SystemColors.HotTrack;
             this.BtnSplitExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSplitExcel.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -228,11 +351,12 @@ namespace CloudWhalesBlogCore.Win
             // 
             // BtnExcelPhotos
             // 
+            this.BtnExcelPhotos.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.BtnExcelPhotos.BackColor = System.Drawing.SystemColors.HotTrack;
             this.BtnExcelPhotos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnExcelPhotos.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BtnExcelPhotos.ForeColor = System.Drawing.Color.White;
-            this.BtnExcelPhotos.Location = new System.Drawing.Point(422, 284);
+            this.BtnExcelPhotos.Location = new System.Drawing.Point(566, 284);
             this.BtnExcelPhotos.Name = "BtnExcelPhotos";
             this.BtnExcelPhotos.Size = new System.Drawing.Size(196, 60);
             this.BtnExcelPhotos.TabIndex = 0;
@@ -244,13 +368,15 @@ namespace CloudWhalesBlogCore.Win
             // 
             this.PanelClientTools.Controls.Add(this.panel2);
             this.PanelClientTools.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelClientTools.Location = new System.Drawing.Point(3, 369);
+            this.PanelClientTools.Location = new System.Drawing.Point(3, 599);
             this.PanelClientTools.Name = "PanelClientTools";
-            this.PanelClientTools.Size = new System.Drawing.Size(1289, 360);
+            this.PanelClientTools.Size = new System.Drawing.Size(1289, 314);
             this.PanelClientTools.TabIndex = 1;
             // 
             // panel2
             // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.BtnMergeExcel);
             this.panel2.Controls.Add(this.lblCommon2);
             this.panel2.Controls.Add(this.lblOutputline2);
@@ -259,19 +385,19 @@ namespace CloudWhalesBlogCore.Win
             this.panel2.Controls.Add(this.lblExcelDirectoryline);
             this.panel2.Controls.Add(this.lblExcelDirectory);
             this.panel2.Controls.Add(this.BtnMergeDocument);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1289, 360);
+            this.panel2.Size = new System.Drawing.Size(1289, 314);
             this.panel2.TabIndex = 3;
             // 
             // BtnMergeExcel
             // 
+            this.BtnMergeExcel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.BtnMergeExcel.BackColor = System.Drawing.SystemColors.HotTrack;
             this.BtnMergeExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnMergeExcel.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BtnMergeExcel.ForeColor = System.Drawing.Color.White;
-            this.BtnMergeExcel.Location = new System.Drawing.Point(204, 265);
+            this.BtnMergeExcel.Location = new System.Drawing.Point(204, 232);
             this.BtnMergeExcel.Name = "BtnMergeExcel";
             this.BtnMergeExcel.Size = new System.Drawing.Size(196, 60);
             this.BtnMergeExcel.TabIndex = 0;
@@ -281,8 +407,10 @@ namespace CloudWhalesBlogCore.Win
             // 
             // lblCommon2
             // 
+            this.lblCommon2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCommon2.AutoSize = true;
-            this.lblCommon2.Location = new System.Drawing.Point(53, 280);
+            this.lblCommon2.Location = new System.Drawing.Point(53, 247);
             this.lblCommon2.Name = "lblCommon2";
             this.lblCommon2.Size = new System.Drawing.Size(110, 31);
             this.lblCommon2.TabIndex = 5;
@@ -290,9 +418,11 @@ namespace CloudWhalesBlogCore.Win
             // 
             // lblOutputline2
             // 
+            this.lblOutputline2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblOutputline2.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.lblOutputline2.ForeColor = System.Drawing.Color.Transparent;
-            this.lblOutputline2.Location = new System.Drawing.Point(204, 216);
+            this.lblOutputline2.Location = new System.Drawing.Point(204, 183);
             this.lblOutputline2.Name = "lblOutputline2";
             this.lblOutputline2.Size = new System.Drawing.Size(1017, 2);
             this.lblOutputline2.TabIndex = 4;
@@ -300,8 +430,10 @@ namespace CloudWhalesBlogCore.Win
             // 
             // lblOutputPath
             // 
+            this.lblOutputPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblOutputPath.AutoSize = true;
-            this.lblOutputPath.Location = new System.Drawing.Point(53, 175);
+            this.lblOutputPath.Location = new System.Drawing.Point(53, 142);
             this.lblOutputPath.Name = "lblOutputPath";
             this.lblOutputPath.Size = new System.Drawing.Size(110, 31);
             this.lblOutputPath.TabIndex = 3;
@@ -309,12 +441,14 @@ namespace CloudWhalesBlogCore.Win
             // 
             // BtnMergeOutput
             // 
+            this.BtnMergeOutput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnMergeOutput.BackColor = System.Drawing.Color.Transparent;
             this.BtnMergeOutput.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.BtnMergeOutput.FlatAppearance.BorderSize = 0;
             this.BtnMergeOutput.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnMergeOutput.ForeColor = System.Drawing.Color.Black;
-            this.BtnMergeOutput.Location = new System.Drawing.Point(204, 167);
+            this.BtnMergeOutput.Location = new System.Drawing.Point(204, 134);
             this.BtnMergeOutput.Name = "BtnMergeOutput";
             this.BtnMergeOutput.Size = new System.Drawing.Size(1017, 46);
             this.BtnMergeOutput.TabIndex = 2;
@@ -325,9 +459,11 @@ namespace CloudWhalesBlogCore.Win
             // 
             // lblExcelDirectoryline
             // 
+            this.lblExcelDirectoryline.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblExcelDirectoryline.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.lblExcelDirectoryline.ForeColor = System.Drawing.Color.Transparent;
-            this.lblExcelDirectoryline.Location = new System.Drawing.Point(204, 106);
+            this.lblExcelDirectoryline.Location = new System.Drawing.Point(204, 73);
             this.lblExcelDirectoryline.Name = "lblExcelDirectoryline";
             this.lblExcelDirectoryline.Size = new System.Drawing.Size(1017, 2);
             this.lblExcelDirectoryline.TabIndex = 1;
@@ -335,8 +471,10 @@ namespace CloudWhalesBlogCore.Win
             // 
             // lblExcelDirectory
             // 
+            this.lblExcelDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblExcelDirectory.AutoSize = true;
-            this.lblExcelDirectory.Location = new System.Drawing.Point(53, 65);
+            this.lblExcelDirectory.Location = new System.Drawing.Point(53, 32);
             this.lblExcelDirectory.Name = "lblExcelDirectory";
             this.lblExcelDirectory.Size = new System.Drawing.Size(110, 31);
             this.lblExcelDirectory.TabIndex = 1;
@@ -344,12 +482,14 @@ namespace CloudWhalesBlogCore.Win
             // 
             // BtnMergeDocument
             // 
+            this.BtnMergeDocument.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnMergeDocument.BackColor = System.Drawing.Color.Transparent;
             this.BtnMergeDocument.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.BtnMergeDocument.FlatAppearance.BorderSize = 0;
             this.BtnMergeDocument.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnMergeDocument.ForeColor = System.Drawing.Color.Black;
-            this.BtnMergeDocument.Location = new System.Drawing.Point(204, 57);
+            this.BtnMergeDocument.Location = new System.Drawing.Point(204, 24);
             this.BtnMergeDocument.Name = "BtnMergeDocument";
             this.BtnMergeDocument.Size = new System.Drawing.Size(1017, 46);
             this.BtnMergeDocument.TabIndex = 0;
@@ -358,69 +498,10 @@ namespace CloudWhalesBlogCore.Win
             this.BtnMergeDocument.UseVisualStyleBackColor = false;
             this.BtnMergeDocument.Click += new System.EventHandler(this.BtnMergeDocument_Click);
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.lblrandomLine);
-            this.panel1.Controls.Add(this.BtnRandomPath);
-            this.panel1.Controls.Add(this.lblClient);
-            this.panel1.Controls.Add(this.BtnSaveToServer);
-            this.panel1.Controls.Add(this.BtnWordPhotos);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 735);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1289, 178);
-            this.panel1.TabIndex = 3;
-            // 
-            // lblrandomLine
-            // 
-            this.lblrandomLine.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblrandomLine.ForeColor = System.Drawing.Color.Transparent;
-            this.lblrandomLine.Location = new System.Drawing.Point(204, 112);
-            this.lblrandomLine.Name = "lblrandomLine";
-            this.lblrandomLine.Size = new System.Drawing.Size(593, 2);
-            this.lblrandomLine.TabIndex = 6;
-            this.lblrandomLine.Text = "定制功能";
-            // 
-            // BtnRandomPath
-            // 
-            this.BtnRandomPath.BackColor = System.Drawing.Color.Transparent;
-            this.BtnRandomPath.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.BtnRandomPath.FlatAppearance.BorderSize = 0;
-            this.BtnRandomPath.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnRandomPath.ForeColor = System.Drawing.Color.Black;
-            this.BtnRandomPath.Location = new System.Drawing.Point(204, 63);
-            this.BtnRandomPath.Name = "BtnRandomPath";
-            this.BtnRandomPath.Size = new System.Drawing.Size(593, 46);
-            this.BtnRandomPath.TabIndex = 5;
-            this.BtnRandomPath.Text = "请选择补充随机图片的位置";
-            this.BtnRandomPath.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnRandomPath.UseVisualStyleBackColor = false;
-            this.BtnRandomPath.Click += new System.EventHandler(this.BtnRandomPath_Click);
-            // 
-            // lblClient
-            // 
-            this.lblClient.AutoSize = true;
-            this.lblClient.Location = new System.Drawing.Point(53, 71);
-            this.lblClient.Name = "lblClient";
-            this.lblClient.Size = new System.Drawing.Size(110, 31);
-            this.lblClient.TabIndex = 1;
-            this.lblClient.Text = "定制功能";
-            // 
-            // BtnSaveToServer
-            // 
-            this.BtnSaveToServer.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.BtnSaveToServer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnSaveToServer.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.BtnSaveToServer.ForeColor = System.Drawing.Color.White;
-            this.BtnSaveToServer.Location = new System.Drawing.Point(1025, 56);
-            this.BtnSaveToServer.Name = "BtnSaveToServer";
-            this.BtnSaveToServer.Size = new System.Drawing.Size(196, 60);
-            this.BtnSaveToServer.TabIndex = 0;
-            this.BtnSaveToServer.Text = "数据入库";
-            this.BtnSaveToServer.UseVisualStyleBackColor = false;
-            // 
             // toolStrip1
             // 
+            this.toolStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.toolStrip1.AutoSize = false;
             this.toolStrip1.BackColor = System.Drawing.Color.Transparent;
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
@@ -585,6 +666,7 @@ namespace CloudWhalesBlogCore.Win
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ClientToolsOffice";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Office文档工具";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.PanelCommonTools.ResumeLayout(false);
@@ -592,8 +674,6 @@ namespace CloudWhalesBlogCore.Win
             this.PanelClientTools.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.toolStripContainer1.ResumeLayout(false);
@@ -633,7 +713,6 @@ namespace CloudWhalesBlogCore.Win
         private System.Windows.Forms.Button BtnOpenFile;
         private System.Windows.Forms.Label lblClient;
         private System.Windows.Forms.Label lblOpenfile;
-        private System.Windows.Forms.Button BtnSaveToServer;
         private System.Windows.Forms.Button BtnSplitExcel;
         private System.Windows.Forms.Button BtnMergeExcel;
         private System.Windows.Forms.Label lblOutputline1;
@@ -647,9 +726,12 @@ namespace CloudWhalesBlogCore.Win
         private System.Windows.Forms.Label lblExcelDirectoryline;
         private System.Windows.Forms.Label lblExcelDirectory;
         private System.Windows.Forms.Button BtnMergeDocument;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblrandomLine;
         private System.Windows.Forms.Button BtnRandomPath;
+        private System.Windows.Forms.ComboBox CbxHandleType;
+        private System.Windows.Forms.Label LblSelectType;
+        private System.Windows.Forms.Button BtnProgressbar;
+        private System.Windows.Forms.TextBox TxtMessage;
     }
 }
 
