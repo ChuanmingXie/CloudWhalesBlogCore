@@ -127,12 +127,12 @@ namespace CloudWhalesBlogCore.Win.WordHelper
                 var roomPhoto = new List<Tuple<string, string>>();
                 List<FileInfo> selectedPic = new();
                 DirectoryInfo randDirectory = new(randomPath);
-                var picAllFileInfo = randDirectory.GetFiles().ToList();
+                var randRange = randDirectory.GetFiles().ToList();
                 foreach (var house in item.HouseParams)
                 {
                     if (string.IsNullOrEmpty(house.RoomNum)) continue;
                     var houseLink = house.RoomNum;
-                    IEnumerable<FileInfo> enumerable = picAllFileInfo.Where(x =>
+                    IEnumerable<FileInfo> enumerable = randRange.Where(x =>
                     {
                         if (x.Name.Length >= houseLink.Length)
                         {
@@ -145,7 +145,7 @@ namespace CloudWhalesBlogCore.Win.WordHelper
                     roomPhoto.Add(new Tuple<string, string>(houseLink, housePic));
                     selectedPic.AddRange(enumerable);
                 }
-                var unselectedPic = picAllFileInfo.Except(selectedPic);
+                var unselectedPic = randRange.Except(selectedPic);
                 var unhousePic = string.Join('#', unselectedPic);
                 roomPhoto.Add(new Tuple<string, string>("表格中没有对应房间项的图片", unhousePic));
 

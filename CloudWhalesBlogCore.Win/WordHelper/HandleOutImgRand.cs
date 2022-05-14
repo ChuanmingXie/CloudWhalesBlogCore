@@ -53,7 +53,7 @@ namespace CloudWhalesBlogCore.Win.WordHelper
                     {
                         foreach (var wordContent in wordContentList)
                         {
-                            var i = 0;
+                            var index = 0;
                             var contentArray = wordContent.Paragraph.Split(';').Where(x => !string.IsNullOrEmpty(x));
                             //3.创建内容
                             foreach (var item in contentArray)
@@ -70,29 +70,32 @@ namespace CloudWhalesBlogCore.Win.WordHelper
                                 XWPFRun rowContentRunitem1 = contentParagraph.CreateRun();
                                 rowContentRunitem1.FontSize = 13;
                                 rowContentRunitem1.SetText(itemlist[0]);
+                                rowContentRunitem1.AddBreak(BreakType.TEXTWRAPPING);
 
-                                if (File.Exists(itemlist[1]))
+                                for (int i = 1; i < itemlist.Length; i++)
                                 {
-                                    //添加水印并保存
-                                    using ImageAddWater imageHelper = new(itemlist[1]);
-                                    var waterImagePath = imageHelper.AddWatermark(itemlist[0], itemlist[1]);
-                                    //waterImage.Save(item);
-
-                                    var imgWidth = (int)(500.0 * 9525);
-                                    var imgHeight = (int)(400.0 * 9525);
-                                    //创建数据流
-                                    FileStream contentStream = new(waterImagePath, FileMode.Open, FileAccess.Read);
-                                    rowContentRunitem1.AddPicture(contentStream, (int)PictureType.JPEG, Path.GetFileName(itemlist[1]), imgWidth, imgHeight);
-                                    contentStream.Close();
+                                    if (File.Exists(itemlist[i]))
+                                    {
+                                        //添加水印并保存
+                                        using ImageAddWater imageHelper = new(itemlist[i]);
+                                        var waterImagePath = imageHelper.AddWatermark(itemlist[0], itemlist[i]);
+                                        //waterImagePath = itemlist[i];
+                                        //创建数据流
+                                        FileStream contentStream = new(waterImagePath, FileMode.Open, FileAccess.Read);
+                                        var imgWidth = (int)(500.0 * 9525);
+                                        var imgHeight = (int)(400.0 * 9525);
+                                        rowContentRunitem1.AddPicture(contentStream, (int)PictureType.JPEG, Path.GetFileName(itemlist[i]), imgWidth, imgHeight);
+                                        contentStream.Close();
+                                    }
                                 }
                                 progressbar.TryBeginInvoke(new Action(() =>
                                 {
-                                    progressbar.SetInfo(null, $"共{contentArray.Count()}项，已执行{i++}项", $"当前正在执行：{i}");
+                                    progressbar.SetInfo(null, $"共{contentArray.Count()}项，已执行{index++}项", $"当前正在执行：{index}");
                                 }));
                                 Thread.Sleep(2);
                                 progressbar.TryBeginInvoke(new Action(() =>
                                 {
-                                    progressbar.SetProgress(i, contentArray.Count());
+                                    progressbar.SetProgress(index, contentArray.Count());
                                 }));
                             }
                         }
@@ -126,13 +129,26 @@ namespace CloudWhalesBlogCore.Win.WordHelper
                 List<FileInfo> selectedPic = new();
                 DirectoryInfo randDirectory = new(randomPath);
                 var randRange = randDirectory.GetFiles().ToList();
+
+
                 Random random = new();
 
                 foreach (var house in item.HouseParams)
                 {
                     if (string.IsNullOrEmpty(house.RoomNum)) continue;
                     var houseLink = house.BuildingNum + "-" + house.RoomNum;
-                    house.StatusPhotos.Add(Path.Combine(randomPath, "图片" + random.Next(1, randRange.Count) + ".png"));
+                    IEnumerable<FileInfo> enumerable = randRange.Where(x =>
+                    {
+                        if (x.Name.Length >= houseLink.Length)
+                        {
+                            return x.Name.Substring(0, houseLink.Length).Equals(houseLink);
+                        }
+                        return false;
+                    });
+                    if (enumerable.Any())
+                        house.StatusPhotos.AddRange(enumerable.Select(x => x.FullName).ToList());
+                    else
+                        house.StatusPhotos.Add(Path.Combine(randomPath, "图片" + random.Next(1, randRange.Count) + ".png"));
                     var housePic = string.Join('#', house.StatusPhotos);
                     roomPhoto.Add(new Tuple<string, string>(houseLink, housePic));
                 }
