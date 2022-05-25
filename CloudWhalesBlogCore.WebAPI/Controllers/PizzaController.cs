@@ -1,27 +1,33 @@
 ﻿using CloudWhalesBlogCore.WebAPI.Model;
 using CloudWhalesBlogCore.WebAPI.Services;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace CloudWhalesBlogCore.WebAPI.Controllers
 {
-    [Route("api/[controller]")]
+    /// <summary>
+    /// pizza控制器接口
+    /// </summary>
     [ApiController]
+    [Route("api/[controller]")]
     public class PizzaController : ControllerBase
     {
+        /// <summary>
+        /// 获取pizza列表
+        /// </summary>
+        /// <returns></returns>
         // GET: api/<PizzaController>
         [HttpGet]
         public ActionResult<List<Pizza>> GetAll() => PizzaService.GetAll();
 
-
+        /// <summary>
+        /// 获取详情
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // GET api/<PizzaController>/5
-        [HttpGet("{id}")]
-        [Route("api/pizza/{id}",Name ="GetPizzaById")]
+        [HttpGet,Route("{id}")]
+        //[Route("/pizza/{id}",Name ="GetPizzaById")]
         public ActionResult<Pizza> Get(int id)
         {
             var pizza = PizzaService.Get(id);
@@ -30,6 +36,11 @@ namespace CloudWhalesBlogCore.WebAPI.Controllers
             return pizza;
         }
 
+       /// <summary>
+       /// 创建pizza
+       /// </summary>
+       /// <param name="pizza"></param>
+       /// <returns></returns>
         // POST api/<PizzaController>
         [HttpPost]
         public IActionResult Create(Pizza pizza)
@@ -38,6 +49,12 @@ namespace CloudWhalesBlogCore.WebAPI.Controllers
             return CreatedAtAction(nameof(Create), new { id = pizza.Id }, pizza);
         }
 
+        /// <summary>
+        /// 更新pizza
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="pizza"></param>
+        /// <returns></returns>
         // PUT api/<PizzaController>/5
         [HttpPut("{id}")]
         public IActionResult Update(int id, Pizza pizza)
@@ -51,6 +68,11 @@ namespace CloudWhalesBlogCore.WebAPI.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// 删除pizza
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // DELETE api/<PizzaController>/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)

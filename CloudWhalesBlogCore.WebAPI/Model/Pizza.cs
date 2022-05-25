@@ -17,10 +17,16 @@ using System.Threading.Tasks;
 
 namespace CloudWhalesBlogCore.WebAPI.Model
 {
+    /// <summary>
+    /// pizza实体模型
+    /// </summary>
     public class Pizza
     {
         public int Id { get; set; }
+
+#pragma warning disable CS8632 // 只能在 "#nullable" 注释上下文内的代码中使用可为 null 的引用类型的注释。
         public string? Name { get; set; }
+#pragma warning restore CS8632 // 只能在 "#nullable" 注释上下文内的代码中使用可为 null 的引用类型的注释。
         public bool IsGlutenFree { get; set; }
     }
 }

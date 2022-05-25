@@ -8,6 +8,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<Folder Include="IServices\" />
+		<Folder Include="OCRServices\" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CloudWhalesBlogCore.WebAPI</name>
+    </assembly>
+    <members>
+        <member name="T:CloudWhalesBlogCore.WebAPI.Controllers.PizzaController">
+            <summary>
+            pizza控制器接口
+            </summary>
+        </member>
+        <member name="M:CloudWhalesBlogCore.WebAPI.Controllers.PizzaController.GetAll">
+            <summary>
+            获取pizza列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CloudWhalesBlogCore.WebAPI.Controllers.PizzaController.Get(System.Int32)">
+            <summary>
+            获取详情
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CloudWhalesBlogCore.WebAPI.Controllers.PizzaController.Create(CloudWhalesBlogCore.WebAPI.Model.Pizza)">
+            <summary>
+            创建pizza
+            </summary>
+            <param name="pizza"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CloudWhalesBlogCore.WebAPI.Controllers.PizzaController.Update(System.Int32,CloudWhalesBlogCore.WebAPI.Model.Pizza)">
+            <summary>
+            更新pizza
+            </summary>
+            <param name="id"></param>
+            <param name="pizza"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CloudWhalesBlogCore.WebAPI.Controllers.PizzaController.Delete(System.Int32)">
+            <summary>
+            删除pizza
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CloudWhalesBlogCore.WebAPI.Model.Pizza">
+            <summary>
+            pizza实体模型
+            </summary>
+        </member>
+    </members>
+</doc>

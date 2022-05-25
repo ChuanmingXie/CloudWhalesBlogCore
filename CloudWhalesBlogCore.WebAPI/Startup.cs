@@ -1,17 +1,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace CloudWhalesBlogCore.WebAPI
 {
@@ -37,9 +32,40 @@ namespace CloudWhalesBlogCore.WebAPI
                 options.ReturnHttpNotAcceptable = true;
                 options.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter());
             });
+            /*services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { 
+                    Title = "CloudWhales.API", 
+                    Version = "v1" 
+                });
+            });*/
+            var basePath = AppContext.BaseDirectory;
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "CloudWhalesBlogCore.WebAPI", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "CloudWhales.API",
+                    Version = "v1",
+                    Description = "API 描述文档",
+                    TermsOfService = new Uri("http://101.132.152.252:8084"),
+                    Contact = new OpenApiContact
+                    {
+                        Name = "CloudWhales.Core",
+                        Email = "chuanmingxie@outlook.com",
+                        Url = new Uri("http://101.132.152.252:8084")
+                    }
+                });
+                try
+                {
+                    var xmlPath = Path.Combine(basePath, "CloudWhales.API.xml");
+                    c.IncludeXmlComments(xmlPath,true);
+                    var xmlModelPath = Path.Combine(basePath, "CloudWhales.Model.xml");//这个就是Model层的xml文件名
+                    c.IncludeXmlComments(xmlModelPath);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             });
         }
 
@@ -58,7 +84,10 @@ namespace CloudWhalesBlogCore.WebAPI
                 //app.UseHsts();
             }
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CloudWhalesBlogCore.WebAPI v1"));
+            app.UseSwaggerUI(c => c.SwaggerEndpoint(
+                "/swagger/v1/swagger.json",
+                "CloudWhales.API v1"
+            ));
 
             #region Authen
             //app.UseMiddleware<JwtTokenAuth>();//注意此授权方法已经放弃，请使用下边的官方验证方法。

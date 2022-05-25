@@ -12,6 +12,7 @@
 ******************************************************************************/
 using CloudWhalesBlogCore.Shared.Common.Base;
 using CloudWhalesBlogCore.Shared.NLogger;
+using Spire.OCR;
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -143,6 +144,21 @@ namespace CloudWhalesBlogCore.Shared.Common.ImageHelper
             catch
             {
                 return null;
+            }
+        }
+
+        public static string WordsOCR(string imagePath)
+        {
+            try
+            {
+                OcrScanner scanner = new OcrScanner();
+                scanner.Scan(imagePath);
+                return scanner.Text.ToString();
+                //File.WriteAllText("output.txt", scanner.Text.ToString());
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
             }
         }
     }

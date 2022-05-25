@@ -33,7 +33,6 @@ namespace CloudWhalesBlogCore.Win
             this.BtnWordPhotos = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.PanelCommonTools = new System.Windows.Forms.Panel();
-            this.TxtMessage = new System.Windows.Forms.TextBox();
             this.CbxHandleType = new System.Windows.Forms.ComboBox();
             this.lblrandomLine = new System.Windows.Forms.Label();
             this.lblOutputline1 = new System.Windows.Forms.Label();
@@ -121,7 +120,6 @@ namespace CloudWhalesBlogCore.Win
             // 
             this.PanelCommonTools.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PanelCommonTools.Controls.Add(this.TxtMessage);
             this.PanelCommonTools.Controls.Add(this.CbxHandleType);
             this.PanelCommonTools.Controls.Add(this.lblrandomLine);
             this.PanelCommonTools.Controls.Add(this.lblOutputline1);
@@ -142,16 +140,6 @@ namespace CloudWhalesBlogCore.Win
             this.PanelCommonTools.Name = "PanelCommonTools";
             this.PanelCommonTools.Size = new System.Drawing.Size(1289, 590);
             this.PanelCommonTools.TabIndex = 2;
-            // 
-            // TxtMessage
-            // 
-            this.TxtMessage.Location = new System.Drawing.Point(815, 231);
-            this.TxtMessage.Multiline = true;
-            this.TxtMessage.Name = "TxtMessage";
-            this.TxtMessage.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.TxtMessage.Size = new System.Drawing.Size(406, 154);
-            this.TxtMessage.TabIndex = 8;
-            this.TxtMessage.Visible = false;
             // 
             // CbxHandleType
             // 
@@ -289,9 +277,8 @@ namespace CloudWhalesBlogCore.Win
             this.BtnProgressbar.Name = "BtnProgressbar";
             this.BtnProgressbar.Size = new System.Drawing.Size(196, 60);
             this.BtnProgressbar.TabIndex = 0;
-            this.BtnProgressbar.Text = "测试进度条";
+            this.BtnProgressbar.Text = "测试按钮";
             this.BtnProgressbar.UseVisualStyleBackColor = false;
-            this.BtnProgressbar.Visible = false;
             this.BtnProgressbar.Click += new System.EventHandler(this.BtnProgressbar_Click);
             // 
             // lblOpenfile
@@ -731,7 +718,6 @@ namespace CloudWhalesBlogCore.Win
         private System.Windows.Forms.ComboBox CbxHandleType;
         private System.Windows.Forms.Label LblSelectType;
         private System.Windows.Forms.Button BtnProgressbar;
-        private System.Windows.Forms.TextBox TxtMessage;
     }
 }
 
