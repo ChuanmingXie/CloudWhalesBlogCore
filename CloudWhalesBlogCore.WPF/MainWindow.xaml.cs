@@ -1,6 +1,4 @@
-﻿using Spire.OCR;
-using System.IO;
-using System.Windows;
+﻿using System.Windows;
 
 namespace CloudWhalesBlogCore.WPF
 {
@@ -16,13 +14,13 @@ namespace CloudWhalesBlogCore.WPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            OcrScanner scanner = new OcrScanner();
-            //var text = ImageAddWater.WordsOCR(@"D:\Software\2.png");
-            //text += ImageAddWater.WordsOCR(@"D:\Software\16-503.jpg");
+            //OcrScanner scanner = new OcrScanner();
+            ////var text = ImageAddWater.WordsOCR(@"D:\Software\2.png");
+            ////text += ImageAddWater.WordsOCR(@"D:\Software\16-503.jpg");
 
-            FileStream contentStream = new(@"D:\Software\2.png", FileMode.Open, FileAccess.Read);
-            scanner.Scan(contentStream, OCRImageFormat.Png);
-            var s = scanner.Text.ToString();
+            //FileStream contentStream = new(@"D:\Software\2.png", FileMode.Open, FileAccess.Read);
+            //scanner.Scan(contentStream, OCRImageFormat.Png);
+            //var s = scanner.Text.ToString();
         }
     }
 }

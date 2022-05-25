@@ -165,9 +165,9 @@ namespace CloudWhalesBlogCore.Win
 
         private void BtnProgressbar_Click(object sender, EventArgs e)
         {
-            var text=ImageAddWater.WordsOCR(@"D:\Software\2.png");
-            text+=ImageAddWater.WordsOCR(@"D:\Software\16-503.jpg");
-            MessageBox.Show(text);
+            //var text=ImageAddWater.WordsOCR(@"D:\Software\2.png");
+            //text+=ImageAddWater.WordsOCR(@"D:\Software\16-503.jpg");
+            //MessageBox.Show(text);
         }
 
     }

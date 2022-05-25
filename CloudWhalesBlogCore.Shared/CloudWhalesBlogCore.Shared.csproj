@@ -20,12 +20,13 @@
 		<PackageReference Include="AspectInjector" Version="2.7.2" />
 		<PackageReference Include="Autofac" Version="6.3.0" />
 		<PackageReference Include="DotNetZip" Version="1.16.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
 		<PackageReference Include="NETStandard.Library" Version="2.0.3" />
 		<PackageReference Include="NLog" Version="4.7.15" />
 		<PackageReference Include="NPOI" Version="2.5.5" />
 		<PackageReference Include="SharpCompress" Version="0.31.0" />
 		<PackageReference Include="SharpZipLib" Version="1.3.3" />
-		<PackageReference Include="spire.OCR" Version="1.8.0" />
 	</ItemGroup>
 
 </Project>
