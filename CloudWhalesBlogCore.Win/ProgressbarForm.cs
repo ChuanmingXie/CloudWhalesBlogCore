@@ -1,5 +1,5 @@
-﻿using CloudWhalesBlogCore.Services.Extensions;
-using CloudWhalesBlogCore.Shared.NLogger;
+﻿using CloudWhalesBlogCore.Shared.NLogger;
+using CloudWhalesBlogCore.Win.Extensions;
 using System;
 using System.Drawing;
 using System.Runtime.InteropServices;

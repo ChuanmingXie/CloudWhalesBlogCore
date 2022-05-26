@@ -10,11 +10,11 @@
 *作用描述:<FUNCTION>
 *Copyright @ chuanming 2022. All rights reserved
 ******************************************************************************/
-using CloudWhalesBlogCore.Services.Extensions;
 using CloudWhalesBlogCore.Services.OfficeServices;
 using CloudWhalesBlogCore.Shared.DTO.Input;
 using CloudWhalesBlogCore.Shared.DTO.Output;
 using CloudWhalesBlogCore.Shared.NLogger;
+using CloudWhalesBlogCore.Win.Extensions;
 using NPOI.OpenXmlFormats.Wordprocessing;
 using NPOI.XWPF.UserModel;
 using System;

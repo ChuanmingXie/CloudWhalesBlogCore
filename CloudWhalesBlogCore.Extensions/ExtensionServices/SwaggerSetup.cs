@@ -10,12 +10,18 @@
 *作用描述:<FUNCTION>
 *Copyright @ chuanming 2022. All rights reserved
 ******************************************************************************/
+using CloudWhalesBlogCore.Shared.Common;
+using CloudWhalesBlogCore.Shared.NLogger;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using static CloudWhalesBlogCore.Extensions.ExtensionServices.CustomApiVersion;
 
 namespace CloudWhalesBlogCore.Extensions.ExtensionServices
 {
@@ -25,6 +31,62 @@ namespace CloudWhalesBlogCore.Extensions.ExtensionServices
         {
             if (services == null)
                 throw new ArgumentException(nameof(services));
+            var basePath = AppContext.BaseDirectory;
+            var ApiName = AppSettings.app(new string[] { "Startup", "ApiName" });
+            services.AddSwaggerGen(c =>
+            {
+                typeof(ApiVersions).GetEnumNames().ToList().ForEach(version =>
+                {
+                    c.SwaggerDoc(version, new OpenApiInfo
+                    {
+                        Version = version,
+                        Title = $"{ApiName}接口文档——{RuntimeInformation.FrameworkDescription}",
+                        Description = $"{ApiName}HTTP API" + version,
+                        Contact = new OpenApiContact
+                        {
+                            Name = ApiName,
+                            Email = "chuanmingxie@outlook.com",
+                            Url = new Uri("http://101.132.152.252:8084")
+                        },
+                        License = new OpenApiLicense { Name = ApiName + " 官方文档", Url = new Uri("http://101.132.152.252:8084/.doc/") }
+                    });
+                    c.OrderActionsBy(o => o.RelativePath);
+                });
+
+                try
+                {
+                    var xmlPath = Path.Combine(basePath, "CloudWhales.API.xml");
+                    c.IncludeXmlComments(xmlPath, true);
+                    var xmlModelPath = Path.Combine(basePath, "CloudWhales.Model.xml");//这个就是Model层的xml文件名
+                    c.IncludeXmlComments(xmlModelPath);
+                }
+                catch (Exception ex)
+                {
+                    NLogHelper._.Error("CloudWhales.API.xml和CloudWhales.Model.xml丢失,请检查拷贝.\n" + ex.Message);
+                }
+            });
+        }
+    }
+
+
+    /// <summary>
+    /// 自定义版本
+    /// </summary>
+    public class CustomApiVersion
+    {
+        /// <summary>
+        /// Api接口版本 自定义
+        /// </summary>
+        public enum ApiVersions
+        {
+            /// <summary>
+            /// V1 版本
+            /// </summary>
+            V1 = 1,
+            /// <summary>
+            /// V2 版本
+            /// </summary>
+            V2 = 2,
         }
     }
 }

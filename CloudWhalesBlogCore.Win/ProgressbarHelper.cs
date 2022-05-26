@@ -10,7 +10,7 @@
 *作用描述:<FUNCTION>
 *Copyright @ chuanming 2022. All rights reserved
 ******************************************************************************/
-using CloudWhalesBlogCore.Services.Extensions;
+using CloudWhalesBlogCore.Win.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

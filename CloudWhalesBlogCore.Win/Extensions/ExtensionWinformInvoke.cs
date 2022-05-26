@@ -13,7 +13,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace CloudWhalesBlogCore.Services.Extensions
+namespace CloudWhalesBlogCore.Win.Extensions
 {
     public static class ExtensionWinformInvoke
     {

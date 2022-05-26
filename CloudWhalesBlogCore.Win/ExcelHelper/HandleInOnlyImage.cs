@@ -15,6 +15,7 @@ using CloudWhalesBlogCore.Services.OfficeServices;
 using CloudWhalesBlogCore.Shared.Common.DataTableHelper;
 using CloudWhalesBlogCore.Shared.DTO.Output;
 using CloudWhalesBlogCore.Shared.NLogger;
+using CloudWhalesBlogCore.Win.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Data;
