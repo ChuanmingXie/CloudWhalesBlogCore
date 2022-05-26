@@ -1,19 +1,4 @@
-﻿<!--<script async id="mini-profiler"
-        src="/mini-profiler-resources/includes.min.js?v=4.2.1+b27bea37e9"
-        data-version="4.2.1+b27bea37e9"
-        data-path="/mini-profiler-resources/"
-        data-current-id="144b1192-acd3-4fe2-bbc5-6f1e1c6d53df"
-        data-ids="87a1341b-995d-4d1d-aaba-8f2bfcfc9ca9,144b1192-acd3-4fe2-bbc5-6f1e1c6d53df"
-        data-position="Left"
-        data-scheme="Light"
-        data-authorized="true"
-        data-max-traces="15"
-        data-toggle-shortcut="Alt+P"
-        data-trivial-milliseconds="2.0"
-        data-ignored-duplicate-execute-types="Open,OpenAsync,Close,CloseAsync">
-</script>-->
-
-<script async="async" id="mini-profiler" 
+﻿<script async="async" id="mini-profiler" 
         src="/profiler/includes.min.js?v=4.2.1+b27bea37e9" 
         data-version="4.2.1+b27bea37e9" 
         data-path="/profiler/" 
@@ -26,7 +11,6 @@
         data-toggle-shortcut="Alt+P" 
         data-trivial-milliseconds="2.0" 
         data-ignored-duplicate-execute-types="Open,OpenAsync,Close,CloseAsync">
-
 </script>
 
 <!-- HTML for static distribution bundle build -->
@@ -36,15 +20,14 @@
     <meta charset="UTF-8">
     <title>%(DocumentTitle)</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Source+Code+Pro:300,600|Titillium+Web:400,600,700" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./swagger-ui.css">
     <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16" />
+    <link rel="stylesheet" type="text/css" href="lib/fontawesome-free/dist/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="lib/mdb-ui-kit/dist/css/mdb.min.css" />
     <style>
-
         html {
             box-sizing: border-box;
-            overflow: -moz-scrollbars-vertical;
             overflow-y: scroll;
         }
 
@@ -52,11 +35,16 @@
         *:before,
         *:after {
             box-sizing: inherit;
+            touch-action:pan-y;
         }
 
         body {
             margin: 0;
             background: #fafafa;
+        }
+
+        label.select-label {
+            padding-top: 10px;
         }
     </style>
     %(HeadContent)
@@ -89,6 +77,11 @@
         </defs>
     </svg>
     <div id="swagger-ui"></div>
+    <footer class="bg-info footer text-center" style="--mdb-bg-opacity:0.9;">
+        <div class="text-center p-3" style="background-color:rgba(0,0,0,0.2)">
+            &copy; 2022 - CoreWebAPI - <a asp-area="" asp-controller="Home" asp-action="Privacy">协议</a>
+        </div>
+    </footer>
     <!-- Workaround for https://github.com/swagger-api/swagger-editor/issues/1371 -->
     <script>
         if (window.navigator.userAgent.indexOf("Edge") > -1) {
@@ -98,6 +91,7 @@
     </script>
     <script src="./swagger-ui-bundle.js"></script>
     <script src="./swagger-ui-standalone-preset.js"></script>
+    <script src="lib/jquery/dist/jquery.js"></script>
     <script>
         window.onload = function () {
             var configObject = JSON.parse('%(ConfigObject)');
@@ -117,7 +111,13 @@
 
             // Apply OAuth config
             ui.initOAuth(oauthConfigObject);
+
+
+            $(".link img").attr({ "src":"img/icon.png","height":"40"});
+
+            $('#swagger-ui').after("<div class='text-center'><img src='https://img.neters.club/doc/wechatgongzhonghao.png' alt='QQ二维码' style='width: 150px;'><div style=\"color: #4990e2;\"><a href=\"../allservices\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"link\">查看所有依赖注册的服务</a></div></div><div style='clear: both;'></div>");
         }
+        /*window.addEventListener('touchmove', func, { passive: false });*/
     </script>
 </body>
 </html>

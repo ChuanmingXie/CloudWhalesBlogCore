@@ -10,6 +10,14 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <None Remove="index.html" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="index.html" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
 	</ItemGroup>
 
@@ -22,6 +30,10 @@
 	  <None Update="CloudWhales.Model.xml">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="wwwroot\" />
 	</ItemGroup>
 
 </Project>

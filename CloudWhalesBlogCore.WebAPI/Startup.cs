@@ -4,6 +4,7 @@ using CloudWhalesBlogCore.Shared.Common;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -18,9 +19,14 @@ namespace CloudWhalesBlogCore.WebAPI
     {
         public IConfiguration Configuration { get; }
 
-        public Startup(IConfiguration configuration)
+        public IWebHostEnvironment Env { get; }
+
+        private IServiceCollection _services;
+
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
+            Env = env;
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -28,29 +34,18 @@ namespace CloudWhalesBlogCore.WebAPI
         {
             services.AddSingleton(new AppSettings(Configuration));
 
-            services.Configure<IISOptions>(options =>
-            {
-                //...
-            });
-            services.AddHttpContextAccessor();
-            services.AddControllers();
-            services.AddMvc(options =>
-            {
-                options.ReturnHttpNotAcceptable = true;
-                options.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter());
-            });
-
-            //services.AddMiniProfiler();
             services.AddMiniProfilerSetup();
-            /*services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Title = "CloudWhales.API",
-                    Version = "v1"
-                });
-            });*/
             services.AddSwaggerSetup();
+
+            services.AddHttpContextAccessor();
+            //services.AddHttpContextSetup();
+
+            services.Configure<KestrelServerOptions>(x => x.AllowSynchronousIO = true)
+                    .Configure<IISServerOptions>(x => x.AllowSynchronousIO = true);
+
+            services.AddControllers();
+
+            _services = services;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,17 +62,13 @@ namespace CloudWhalesBlogCore.WebAPI
                 // 强制实施 HTTPS 在 ASP.NET Core，配合 app.UseHttpsRedirection
                 //app.UseHsts();
             }
-
+            app.UseStaticFiles();
             app.UseSwagger();
-            //app.UseSwaggerUI(c => c.SwaggerEndpoint(
-            //    "/swagger/v1/swagger.json",
-            //    "CloudWhales.API v1"
-            //));
+
             app.UseSwaggerMiddle(
                 () => GetType().GetTypeInfo().Assembly
                 .GetManifestResourceStream("CloudWhalesBlogCore.WebAPI.index.html"));
-            
-            //app.UseMiniProfiler();
+
             app.UseMiniProfilerMiddle();
 
             #region Authen

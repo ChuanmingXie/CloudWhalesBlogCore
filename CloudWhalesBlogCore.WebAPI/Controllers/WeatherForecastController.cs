@@ -32,7 +32,6 @@ namespace CloudWhalesBlogCore.WebAPI.Controllers
         {
 
             var rng = new Random();
-            var html = MiniProfiler.Current.RenderIncludes(_accessor.HttpContext);
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
