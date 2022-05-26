@@ -22,14 +22,14 @@
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:CloudWhalesBlogCore.WebAPI.Controllers.PizzaController.Create(CloudWhalesBlogCore.WebAPI.Model.Pizza)">
+        <member name="M:CloudWhalesBlogCore.WebAPI.Controllers.PizzaController.Create(CloudWhalesBlogCore.Model.DataModel.Pizza)">
             <summary>
             创建pizza
             </summary>
             <param name="pizza"></param>
             <returns></returns>
         </member>
-        <member name="M:CloudWhalesBlogCore.WebAPI.Controllers.PizzaController.Update(System.Int32,CloudWhalesBlogCore.WebAPI.Model.Pizza)">
+        <member name="M:CloudWhalesBlogCore.WebAPI.Controllers.PizzaController.Update(System.Int32,CloudWhalesBlogCore.Model.DataModel.Pizza)">
             <summary>
             更新pizza
             </summary>
@@ -43,11 +43,6 @@
             </summary>
             <param name="id"></param>
             <returns></returns>
-        </member>
-        <member name="T:CloudWhalesBlogCore.WebAPI.Model.Pizza">
-            <summary>
-            pizza实体模型
-            </summary>
         </member>
     </members>
 </doc>

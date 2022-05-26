@@ -15,7 +15,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\CloudWhalesBlogCore.Extensions\CloudWhalesBlogCore.Extensions.csproj" />
-		<ProjectReference Include="..\CloudWhalesBlogCore.Model\CloudWhalesBlogCore.Model.csproj" />
+		<ProjectReference Include="..\CloudWhalesBlogCore.Services\CloudWhalesBlogCore.Services.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -23,18 +23,18 @@ namespace CloudWhalesBlogCore.Shared.Common
     /// <summary>
     /// appsettings.json 操作类
     /// </summary>
-    public class AppSetings
+    public class AppSettings
     {
         static IConfiguration Configuration { get; set; }
         
         static string ContentPath { get; set; }
 
-        public AppSetings(IConfiguration configuration)
+        public AppSettings(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public AppSetings(string contentPath)
+        public AppSettings(string contentPath)
         {
             string path = "appsettings.json";
             //如果你把配置文件 是 根据环境变量来分开了，可以这样写

@@ -10,7 +10,7 @@
 *作用描述:<FUNCTION>
 *Copyright @ chuanming 2022. All rights reserved
 ******************************************************************************/
-using CloudWhalesBlogCore.WebAPI.Model;
+using CloudWhalesBlogCore.Model.DataModel;
 using System.Collections.Generic;
 using System.Linq;
 

@@ -15,7 +15,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CloudWhalesBlogCore.WebAPI.Model
+namespace CloudWhalesBlogCore.Model.DataModel
 {
     /// <summary>
     /// pizza实体模型

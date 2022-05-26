@@ -45,5 +45,10 @@
             现场拆除状态图片列表(以此为主，次，书)
             </summary>
         </member>
+        <member name="T:CloudWhalesBlogCore.Model.DataModel.Pizza">
+            <summary>
+            pizza实体模型
+            </summary>
+        </member>
     </members>
 </doc>

@@ -1,3 +1,6 @@
+using CloudWhalesBlogCore.Extensions.ExtensionConfigure;
+using CloudWhalesBlogCore.Extensions.ExtensionServices;
+using CloudWhalesBlogCore.Shared.Common;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Formatters;
@@ -7,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System;
 using System.IO;
+using System.Reflection;
 
 namespace CloudWhalesBlogCore.WebAPI
 {
@@ -22,51 +26,31 @@ namespace CloudWhalesBlogCore.WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton(new AppSettings(Configuration));
+
             services.Configure<IISOptions>(options =>
             {
                 //...
             });
+            services.AddHttpContextAccessor();
             services.AddControllers();
             services.AddMvc(options =>
             {
                 options.ReturnHttpNotAcceptable = true;
                 options.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter());
             });
+
+            //services.AddMiniProfiler();
+            services.AddMiniProfilerSetup();
             /*services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { 
-                    Title = "CloudWhales.API", 
-                    Version = "v1" 
-                });
-            });*/
-            var basePath = AppContext.BaseDirectory;
-            services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Title = "CloudWhales.API",
-                    Version = "v1",
-                    Description = "API 描述文档",
-                    TermsOfService = new Uri("http://101.132.152.252:8084"),
-                    Contact = new OpenApiContact
-                    {
-                        Name = "CloudWhales.Core",
-                        Email = "chuanmingxie@outlook.com",
-                        Url = new Uri("http://101.132.152.252:8084")
-                    }
+                    Version = "v1"
                 });
-                try
-                {
-                    var xmlPath = Path.Combine(basePath, "CloudWhales.API.xml");
-                    c.IncludeXmlComments(xmlPath,true);
-                    var xmlModelPath = Path.Combine(basePath, "CloudWhales.Model.xml");//这个就是Model层的xml文件名
-                    c.IncludeXmlComments(xmlModelPath);
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-            });
+            });*/
+            services.AddSwaggerSetup();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -83,11 +67,18 @@ namespace CloudWhalesBlogCore.WebAPI
                 // 强制实施 HTTPS 在 ASP.NET Core，配合 app.UseHttpsRedirection
                 //app.UseHsts();
             }
+
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint(
-                "/swagger/v1/swagger.json",
-                "CloudWhales.API v1"
-            ));
+            //app.UseSwaggerUI(c => c.SwaggerEndpoint(
+            //    "/swagger/v1/swagger.json",
+            //    "CloudWhales.API v1"
+            //));
+            app.UseSwaggerMiddle(
+                () => GetType().GetTypeInfo().Assembly
+                .GetManifestResourceStream("CloudWhalesBlogCore.WebAPI.index.html"));
+            
+            //app.UseMiniProfiler();
+            app.UseMiniProfilerMiddle();
 
             #region Authen
             //app.UseMiddleware<JwtTokenAuth>();//注意此授权方法已经放弃，请使用下边的官方验证方法。
@@ -110,6 +101,7 @@ namespace CloudWhalesBlogCore.WebAPI
             app.UseRouting();
 
             app.UseAuthorization();
+
 
             app.UseEndpoints(endpoints =>
             {

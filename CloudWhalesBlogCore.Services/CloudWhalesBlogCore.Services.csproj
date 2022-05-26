@@ -4,12 +4,12 @@
 		<TargetFramework>net5.0</TargetFramework>
 	</PropertyGroup>
 	<ItemGroup>
-		<Folder Include="IServices\" />
 		<Folder Include="OCRServices\" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\CloudWhalesBlogCore.Shared\CloudWhalesBlogCore.Shared.csproj" />
+		<ProjectReference Include="..\CloudWhalesBlogCore.EFCore\CloudWhalesBlogCore.EFCore.csproj" />
+		<ProjectReference Include="..\CloudWhalesBlogCore.IServices\CloudWhalesBlogCore.IServices.csproj" />
 	</ItemGroup>
 
 </Project>

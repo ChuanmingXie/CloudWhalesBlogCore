@@ -1,4 +1,4 @@
-﻿using CloudWhalesBlogCore.WebAPI.Model;
+﻿using CloudWhalesBlogCore.Model.DataModel;
 using CloudWhalesBlogCore.WebAPI.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;

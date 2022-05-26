@@ -1,6 +1,6 @@
 using System;
 
-namespace CloudWhalesBlogCore.WebAPI
+namespace CloudWhalesBlogCore.Model.DataModel
 {
     public class WeatherForecast
     {
