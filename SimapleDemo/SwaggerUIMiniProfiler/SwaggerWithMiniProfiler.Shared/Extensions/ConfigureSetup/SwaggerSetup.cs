@@ -54,36 +54,48 @@ namespace SwaggerWithMiniProfiler.Shared.Extensions.ConfigureSetup
                 c.IncludeXmlComments(apiXmlPath, true);//控制器层注释（true表示显示控制器注释）
                 c.IncludeXmlComments(entityXmlPath);
 
+                c.OperationFilter<AddHeaderOperationFilter>("Correlation", "Correlation id for request", false);
                 //// 开启加权限接口说明
                 c.OperationFilter<AddResponseHeadersFilter>();
                 c.OperationFilter<AppendAuthorizeToSummaryOperationFilter>();
 
-
-                #region Token绑定到ConfigureServices
+                #region Jwt使用1:全部接口使用Jwt验证 Token绑定到ConfigureServices 
                 // 下面两步配置 实现 swagger 上面 “锁”
-                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                {
-                    In = ParameterLocation.Header,  // 位于Header
-                    Description = "请于此处直接填写token 无需 Bearer然后再加空格的形式",
-                    Name = "Authorization",
-                    Type = SecuritySchemeType.Http,
-                    BearerFormat = "JWT",
-                    Scheme = "bearer"
-                });
-                //每个动作都加显示加锁
-                c.AddSecurityRequirement(new OpenApiSecurityRequirement{
-                    {
-                        new OpenApiSecurityScheme{
-                            Reference=new OpenApiReference{
-                                Type=ReferenceType.SecurityScheme,
-                                Id="Bearer"
-                            }
-                        },Array.Empty<string>()
-                    }
-                });
+                //c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                //{
+                //    In = ParameterLocation.Header,  // 位于Header
+                //    Description = "请于此处直接填写token 无需 Bearer然后再加空格的形式",
+                //    Name = "Authorization",
+                //    Type = SecuritySchemeType.Http,
+                //    BearerFormat = "JWT",
+                //    Scheme = "bearer"
+                //});
+                ////每个动作都加显示加锁
+                //c.AddSecurityRequirement(new OpenApiSecurityRequirement{
+                //    {
+                //        new OpenApiSecurityScheme{
+                //            Reference=new OpenApiReference{
+                //                Type=ReferenceType.SecurityScheme,
+                //                Id="Bearer"
+                //            }
+                //        },Array.Empty<string>()
+                //    }
+                //});
+                #endregion
+
+                #region Jwt使用2:针对具备角色权限的接口使用Jwt验证 Token绑定到ConfigureServices 
 
                 // 在header中添加token，传递到后台(排除所有加权限的接口 使用 使用token)
-                //c.OperationFilter<SecurityRequirementsOperationFilter>();
+                c.OperationFilter<SecurityRequirementsOperationFilter>();
+                //给api添加token令牌证书
+                c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+                {
+                    Description = "JWT授权(数据将在请求头中进行传输) 直接在下框中输入Bearer {token}（注意两者之间是一个空格）\"",
+                    Name = "Authorization",//jwt默认的参数名称
+                    In = ParameterLocation.Header,//jwt默认存放Authorization信息的位置(请求头中)
+                    Type = SecuritySchemeType.ApiKey
+                });
+
                 #endregion
             });
 
