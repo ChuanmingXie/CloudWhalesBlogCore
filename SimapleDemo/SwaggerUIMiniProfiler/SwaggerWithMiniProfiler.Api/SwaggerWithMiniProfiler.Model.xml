@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SwaggerWithMiniProfiler.Model</name>
+    </assembly>
+    <members>
+        <member name="T:Models.Book">
+            <summary>
+             图书信息
+            </summary>
+        </member>
+        <member name="P:Models.Book.Tid">
+            <summary>
+            Desc:图书ID
+            Default:
+            Nullable:False
+            </summary>           
+        </member>
+        <member name="P:Models.Book.Title">
+            <summary>
+            Desc:图书名称
+            Default:
+            Nullable:False
+            </summary>           
+        </member>
+        <member name="P:Models.Book.Author">
+            <summary>
+            Desc:图书作者
+            Default:
+            Nullable:False
+            </summary>           
+        </member>
+        <member name="T:SwaggerWithMiniProfiler.Model.Entities.Student">
+            <summary>
+            学生实体
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.Entities.Student.Tid">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.Entities.Student.ClassId">
+            <summary>
+            班级Id
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.Entities.Student.Name">
+            <summary>
+            姓名
+            </summary>
+        </member>
+        <member name="T:SwaggerWithMiniProfiler.Model.Entities.Weather">
+            <summary>
+            天气实体
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.Entities.Weather.Date">
+            <summary>
+            时间
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.Entities.Weather.TemperatureC">
+            <summary>
+            温度
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.Entities.Weather.TemperatureF">
+            <summary>
+            华氏单位
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.Entities.Weather.Summary">
+            <summary>
+            概要
+            </summary>
+        </member>
+        <member name="T:SwaggerWithMiniProfiler.Model.ViewModel.ModelMessage`1">
+            <summary>
+            消息传递通用类
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.ViewModel.ModelTable`1.Code">
+            <summary>
+            表格数据，支持分页
+            </summary>
+        </member>
+        <member name="T:SwaggerWithMiniProfiler.Model.ViewModel.ModelToken">
+            <summary>
+            临牌实体
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.ViewModel.ModelToken.uid">
+            <summary>
+            用户Id
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.ViewModel.ModelToken.UName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.ViewModel.ModelToken.Phone">
+            <summary>
+            手机
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.ViewModel.ModelToken.Icon">
+            <summary>
+            头像
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.ViewModel.ModelToken.UNickName">
+            <summary>
+            昵称
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.ViewModel.ModelToken.Sub">
+            <summary>
+            摘要
+            </summary>
+        </member>
+    </members>
+</doc>
