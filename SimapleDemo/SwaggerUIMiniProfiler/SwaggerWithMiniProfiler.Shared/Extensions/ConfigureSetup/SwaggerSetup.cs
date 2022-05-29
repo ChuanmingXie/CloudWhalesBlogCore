@@ -87,7 +87,7 @@ namespace SwaggerWithMiniProfiler.Shared.Extensions.ConfigureSetup
 
                 // 在header中添加token，传递到后台(排除所有加权限的接口 使用 使用token)
                 c.OperationFilter<SecurityRequirementsOperationFilter>();
-                //给api添加token令牌证书
+                //给api添加token令牌证书 oauth2 不能更改(不能更改)
                 c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
                 {
                     Description = "JWT授权(数据将在请求头中进行传输) 直接在下框中输入Bearer {token}（注意两者之间是一个空格）\"",
