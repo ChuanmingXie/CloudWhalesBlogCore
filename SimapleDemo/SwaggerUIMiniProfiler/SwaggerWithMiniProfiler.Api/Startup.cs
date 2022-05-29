@@ -31,15 +31,16 @@ namespace SwaggerWithMiniProfiler.Api
         {
             services.AddMiniProfilerSetup();
             services.AddSwagerSetup();
-            services.AddMemoryCacheSetup();
-            services.AddAuthorizationSetup();
 
+            services.AddAuthorizationSetup();
+            services.AddMemoryCacheSetup();
             services.AddHttpContextSetup();
 
             services.Configure<KestrelServerOptions>(x => x.AllowSynchronousIO = true)
                     .Configure<IISServerOptions>(x => x.AllowSynchronousIO = true);
 
             services.AddControllers();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,24 +55,22 @@ namespace SwaggerWithMiniProfiler.Api
             {
                 app.UseExceptionHandler("/Error");
             }
+            app.UseHttpsRedirection();
+
 
             app.UseSwaggerModdle(
                 () =>GetType()
                 .GetTypeInfo().Assembly
                 .GetManifestResourceStream("SwaggerWithMiniProfiler.Api.index.html"));
-            
-            
+            app.UseMiniProfilerMiddle();
 
-            app.UseHttpsRedirection();
 
             app.UseRouting();
-            app.UseMiddleware<JwtAuthMiddle>();
-            //app.UseAuthentication();
+            //app.UseMiddleware<JwtAuthMiddle>();
+
+            app.UseAuthentication();
             app.UseAuthorization();
 
-   
-
-            app.UseMiniProfilerMiddle();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

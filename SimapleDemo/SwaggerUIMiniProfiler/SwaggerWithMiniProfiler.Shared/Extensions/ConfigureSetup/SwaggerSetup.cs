@@ -54,24 +54,37 @@ namespace SwaggerWithMiniProfiler.Shared.Extensions.ConfigureSetup
                 c.IncludeXmlComments(apiXmlPath, true);//控制器层注释（true表示显示控制器注释）
                 c.IncludeXmlComments(entityXmlPath);
 
-                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+                //// 开启加权限接口说明
+                c.OperationFilter<AddResponseHeadersFilter>();
+                c.OperationFilter<AppendAuthorizeToSummaryOperationFilter>();
+
+
+                #region Token绑定到ConfigureServices
+                // 下面两步配置 实现 swagger 上面 “锁”
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
-                    Description = "Please enter into field the word 'Bearer' followed by a space and the JWT value",
+                    In = ParameterLocation.Header,  // 位于Header
+                    Description = "请于此处直接填写token 无需 Bearer然后再加空格的形式",
                     Name = "Authorization",
-                    In = ParameterLocation.Header,
-                    Type = SecuritySchemeType.ApiKey,
+                    Type = SecuritySchemeType.Http,
+                    BearerFormat = "JWT",
+                    Scheme = "bearer"
                 });
-                c.AddSecurityRequirement(new OpenApiSecurityRequirement
-                {
-                    { new OpenApiSecurityScheme
+                //每个动作都加显示加锁
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement{
                     {
-                        Reference = new OpenApiReference()
-                        {
-                            Id = "Bearer",
-                            Type = ReferenceType.SecurityScheme
-                        }
-                    }, Array.Empty<string>() }
+                        new OpenApiSecurityScheme{
+                            Reference=new OpenApiReference{
+                                Type=ReferenceType.SecurityScheme,
+                                Id="Bearer"
+                            }
+                        },Array.Empty<string>()
+                    }
                 });
+
+                // 在header中添加token，传递到后台(排除所有加权限的接口 使用 使用token)
+                //c.OperationFilter<SecurityRequirementsOperationFilter>();
+                #endregion
             });
 
         }

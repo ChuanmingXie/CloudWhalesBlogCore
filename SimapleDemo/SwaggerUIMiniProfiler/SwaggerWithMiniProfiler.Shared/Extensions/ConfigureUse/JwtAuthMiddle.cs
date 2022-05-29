@@ -55,6 +55,8 @@ namespace SwaggerWithMiniProfiler.Shared.Extensions.ConfigureUse
                 List<Claim> claims = new List<Claim>();
                 Claim claim = new Claim(modelToken.Sub + "Type", modelToken.Sub);
                 claims.Add(claim);
+                Claim claim1 = new Claim(ClaimTypes.Role, "Admin");
+                claims.Add(claim1);
                 ClaimsIdentity identity = new ClaimsIdentity(claims);
                 ClaimsPrincipal principal = new ClaimsPrincipal(identity);
                 httpContext.User = principal;

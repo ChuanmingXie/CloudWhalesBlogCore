@@ -91,10 +91,15 @@
             临牌实体
             </summary>
         </member>
-        <member name="P:SwaggerWithMiniProfiler.Model.ViewModel.ModelToken.uid">
+        <member name="P:SwaggerWithMiniProfiler.Model.ViewModel.ModelToken.Uid">
             <summary>
             用户Id
             </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.ViewModel.ModelToken.Role">
+            <summary>	
+            角色	
+            </summary>	
         </member>
         <member name="P:SwaggerWithMiniProfiler.Model.ViewModel.ModelToken.UName">
             <summary>

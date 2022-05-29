@@ -25,13 +25,20 @@ namespace SwaggerWithMiniProfiler.Model.ViewModel
     {
         public ModelToken()
         {
-            this.uid = 0;
+            this.Uid = 0;
         }
+
+
 
         /// <summary>
         /// 用户Id
         /// </summary>
-        public long uid { get;set; }
+        public long Uid { get;set; }
+
+        /// <summary>	
+        /// 角色	
+        /// </summary>	
+        public string Role { get; set; }
 
         /// <summary>
         /// 用户名

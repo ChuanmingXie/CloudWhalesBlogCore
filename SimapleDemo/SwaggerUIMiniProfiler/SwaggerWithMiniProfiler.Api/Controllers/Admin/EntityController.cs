@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using SwaggerWithMiniProfiler.BLL.Admin;
 using SwaggerWithMiniProfiler.Model.ViewModel;
@@ -45,10 +46,73 @@ namespace SwaggerWithMiniProfiler.Api.Controllers.Admin
         {
             var mToken = new ModelToken()
             {
-                uid = id,
-                Sub = sub
+                Uid = id,
+                Sub = sub,
+                Role="Admin"
             };
-            return Ok(JwtTokenHelper.IssueJWT(mToken, TimeSpan.FromMinutes(expiresSliding), TimeSpan.FromDays(expiresAbsoulute)));
+            return Ok(JwtTokenHelper.IssueJwt(mToken));
+        }
+
+        [HttpGet]
+        [Route("{Role}")]
+        public IActionResult Login(string role)
+        {
+            string jwtStr = string.Empty;
+            bool suc = false;
+
+            if (role != null)
+            {
+                // 将用户id和角色名，作为单独的自定义变量封装进 token 字符串中。
+                ModelToken tokenModel = new ModelToken { Uid = 1, Role = role };
+                jwtStr = JwtTokenHelper.IssueJwt(tokenModel);//登录，获取到一定规则的 Token 令牌
+                suc = true;
+            }
+            else
+            {
+                jwtStr = "login fail!!!";
+            }
+
+            return Ok(new
+            {
+                success = suc,
+                token = jwtStr
+            });
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult ParseToken()
+        {
+            //需要截取Bearer 
+            var tokenHeader = HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+            var user = JwtTokenHelper.SerializeJwt(tokenHeader);
+            return Ok(user);
+
+        }
+
+        /// <summary>
+        /// 需要Admin权限
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Authorize(Policy = "Admin")]
+        [Route("GetAdmin")]
+        public IActionResult Admin()
+        {
+            return Ok("hello admin");
+        }
+
+
+        /// <summary>
+        /// 需要System权限
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("GetSystem")]
+        [Authorize(Roles = "System")]
+        public IActionResult System()
+        {
+            return Ok("hello System");
         }
     }
 }

@@ -16,6 +16,18 @@
             <param name="entityName"></param>
             <returns></returns>
         </member>
+        <member name="M:SwaggerWithMiniProfiler.Api.Controllers.Admin.EntityController.Admin">
+            <summary>
+            需要Admin权限
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SwaggerWithMiniProfiler.Api.Controllers.Admin.EntityController.System">
+            <summary>
+            需要System权限
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:SwaggerWithMiniProfiler.Api.Controllers.Admin.StudentController">
             <summary>
             学生模块

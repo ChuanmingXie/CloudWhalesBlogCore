@@ -27,27 +27,54 @@ namespace SwaggerWithMiniProfiler.Shared.Extensions.ConfigureSetup
         {
             if (services == null)
                 throw new ArgumentNullException(nameof(services));
+
+    
+
+
+            #region 【第二步：配置认证服务】	
+            // 令牌验证参数	
+            var tokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("ColudWhales Secret Key")), //参数配置在下边
+                ValidateIssuer = true,
+                ValidIssuer = "CloudWhales",//发行人	
+                ValidateAudience = true,
+                ValidAudience = "Blog",//订阅人	
+                ValidateLifetime = true,
+                ClockSkew = TimeSpan.FromSeconds(30),
+                RequireExpirationTime = true,
+            };
+
+            //2.1【认证】、core自带官方JWT认证
+            // 开启Bearer认证
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+             // 添加JwtBearer服务
+             .AddJwtBearer(o =>
+             {
+                 o.TokenValidationParameters = tokenValidationParameters;
+                 o.Events = new JwtBearerEvents
+                 {
+                     OnAuthenticationFailed = context =>
+                     {
+                         // 如果过期，则把<是否过期>添加到，返回头信息中
+                         if (context.Exception.GetType() == typeof(SecurityTokenExpiredException))
+                         {
+                             context.Response.Headers.Add("Token-Expired", "true");
+                         }
+                         return Task.CompletedTask;
+                     }
+                 };
+             });
+            #endregion
+
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("Client", policy => policy.RequireClaim("Client").Build());
-                options.AddPolicy("Admin", policy => policy.RequireClaim("Admin").Build());
-                options.AddPolicy("SystemOrAdmin", policy => policy.RequireClaim("Admin", "System"));
-                options.AddPolicy("A_S_O", policy => policy.RequireClaim("Admin", "System", "Others"));
+                options.AddPolicy("Client", policy => policy.RequireRole("Client").Build());//单独角色
+                options.AddPolicy("Admin", policy => policy.RequireRole("Admin").Build());
+                options.AddPolicy("SystemOrAdmin", policy => policy.RequireRole("Admin", "System"));//或的关系
+                options.AddPolicy("SystemAndAdmin", policy => policy.RequireRole("Admin").RequireRole("System"));//且的关系
             });
-
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
-                {
-                    options.TokenValidationParameters = new TokenValidationParameters()
-                    {
-                        ValidateIssuer = true,
-                        ValidIssuer = "ColudWhales",
-                        ValidateAudience = false,
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("ColudWhales Secret Key"))
-                    };
-                });
-
         }
     }
 }

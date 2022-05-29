@@ -10,7 +10,6 @@ namespace SwaggerWithMiniProfiler.Api.Controllers.Admin
     /// </summary>
     [Produces("application/json")]
     [Route("api/admin/[controller]")]
-    [Authorize(Policy ="Admin")]
     public class StudentController : Controller
     {
         private StudentBLL studentBLL = new StudentBLL();
@@ -23,7 +22,7 @@ namespace SwaggerWithMiniProfiler.Api.Controllers.Admin
         /// <returns></returns>
         [HttpGet]
         [Route("GetAllStudent")]
-        public JsonResult GetStudentPageList(int pageIndex=1,int pageSize = 10)
+        public JsonResult GetStudentPageList(int pageIndex = 1, int pageSize = 10)
         {
             return Json(studentBLL.GetPageList(pageIndex, pageSize));
         }
@@ -34,6 +33,7 @@ namespace SwaggerWithMiniProfiler.Api.Controllers.Admin
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet, Route("GetStudentByID/{id}")]
+        [Authorize]
         public JsonResult GetStudentById(long id)
         {
             return Json(studentBLL.GetById(id));
@@ -46,6 +46,7 @@ namespace SwaggerWithMiniProfiler.Api.Controllers.Admin
         /// <returns></returns>
         [HttpPost]
         [Route("AddStudent")]
+        [Authorize(Policy = "SystemOrAdmin")]
         public JsonResult Add(Student entity = null)
         {
             if (entity == null)
@@ -53,7 +54,7 @@ namespace SwaggerWithMiniProfiler.Api.Controllers.Admin
 
             return Json(studentBLL.Add(entity));
         }
-       
+
         /// <summary>
         /// 编辑学生
         /// </summary>
@@ -61,7 +62,8 @@ namespace SwaggerWithMiniProfiler.Api.Controllers.Admin
         /// <returns></returns>
         [HttpPut]
         [Route("UpdateStudent")]
-        public JsonResult Update(Student entity=null)
+        [Authorize(Roles = "Admin")]
+        public JsonResult Update(Student entity = null)
         {
             if (entity == null)
                 return Json("参数为空");
