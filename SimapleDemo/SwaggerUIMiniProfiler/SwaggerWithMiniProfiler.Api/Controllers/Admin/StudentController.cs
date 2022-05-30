@@ -22,6 +22,8 @@ namespace SwaggerWithMiniProfiler.Api.Controllers.Admin
         /// <returns></returns>
         [HttpGet]
         [Route("GetAllStudent")]
+        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "System")]
         public JsonResult GetStudentPageList(int pageIndex = 1, int pageSize = 10)
         {
             return Json(studentBLL.GetPageList(pageIndex, pageSize));

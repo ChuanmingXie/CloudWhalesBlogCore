@@ -61,26 +61,26 @@ namespace SwaggerWithMiniProfiler.Shared.Extensions.ConfigureSetup
 
                 #region Jwt使用1:全部接口使用Jwt验证 Token绑定到ConfigureServices 
                 // 下面两步配置 实现 swagger 上面 “锁”
-                //c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                //{
-                //    In = ParameterLocation.Header,  // 位于Header
-                //    Description = "请于此处直接填写token 无需 Bearer然后再加空格的形式",
-                //    Name = "Authorization",
-                //    Type = SecuritySchemeType.Http,
-                //    BearerFormat = "JWT",
-                //    Scheme = "bearer"
-                //});
-                ////每个动作都加显示加锁
-                //c.AddSecurityRequirement(new OpenApiSecurityRequirement{
-                //    {
-                //        new OpenApiSecurityScheme{
-                //            Reference=new OpenApiReference{
-                //                Type=ReferenceType.SecurityScheme,
-                //                Id="Bearer"
-                //            }
-                //        },Array.Empty<string>()
-                //    }
-                //});
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    In = ParameterLocation.Header,  // 位于Header
+                    Description = "请于此处直接填写token 无需 Bearer然后再加空格的形式",
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.Http,
+                    BearerFormat = "JWT",
+                    Scheme = "bearer"
+                });
+                //每个动作都加显示加锁
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement{
+                    {
+                        new OpenApiSecurityScheme{
+                            Reference=new OpenApiReference{
+                                Type=ReferenceType.SecurityScheme,
+                                Id="Bearer"
+                            }
+                        },Array.Empty<string>()
+                    }
+                });
                 #endregion
 
                 #region Jwt使用2:针对具备角色权限的接口使用Jwt验证 Token绑定到ConfigureServices 
