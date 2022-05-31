@@ -1,10 +1,10 @@
 ﻿/*****************************************************************************
-*项目名称:SwaggerWithMiniProfiler.Repository.SqlSugarCore
+*项目名称:SwaggerWithMiniProfiler.Repository.ContextSugar
 *项目描述:
-*类 名 称:BaseDBConfig
+*类 名 称:DataBaseInitializer
 *类 描 述:
 *创 建 人:Chuanmingxie
-*创建时间:2022/5/27 10:18:42
+*创建时间:2022/5/31 18:54:55
 *修 改 人:
 *修改时间:
 *作用描述:<FUNCTION>
@@ -16,14 +16,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SwaggerWithMiniProfiler.Repository.SqlSugarCore
+namespace SwaggerWithMiniProfiler.Repository.ContextSugar
 {
-    /// <summary>
-    /// 数据库基本操作
-    /// </summary>
-    public class BaseDBConnection
+    class DataBaseInitializer
     {
-        public static string ConnectionString = "Server=(localdb)\\mssqllocaldb;Database=PayAPI;Trusted_Connection=True;MultipleActiveResultSets=true";
-
     }
 }

@@ -1369,11 +1369,142 @@
             修改时间
             </summary>
         </member>
+        <member name="F:SwaggerWithMiniProfiler.Model.ViewModel.ResponseEnum.NoPermissions">
+            <summary>
+            无权限
+            </summary>
+        </member>
+        <member name="F:SwaggerWithMiniProfiler.Model.ViewModel.ResponseEnum.NoFound">
+            <summary>
+            找不到指定资源
+            </summary>
+        </member>
+        <member name="F:SwaggerWithMiniProfiler.Model.ViewModel.ResponseEnum.ServerError">
+            <summary>
+            找不到指定资源
+            </summary>
+        </member>
         <member name="T:SwaggerWithMiniProfiler.Model.ViewModel.ModelMessage`1">
             <summary>
             消息传递通用类
             </summary>
             <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.ViewModel.ModelMessage`1.status">
+            <summary>
+            状态码
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.ViewModel.ModelMessage`1.Success">
+            <summary>
+            操作是否成功
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.ViewModel.ModelMessage`1.Msg">
+            <summary>
+            返回信息
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.ViewModel.ModelMessage`1.Data">
+            <summary>
+            返回数据集合
+            </summary>
+        </member>
+        <member name="M:SwaggerWithMiniProfiler.Model.ViewModel.ModelMessage`1.SuccessMsg(System.String)">
+            <summary>
+            返回成功
+            </summary>
+            <param name="msg">消息</param>
+            <returns></returns>
+        </member>
+        <member name="M:SwaggerWithMiniProfiler.Model.ViewModel.ModelMessage`1.SuccessMsg(System.String,`0)">
+            <summary>
+            返回成功
+            </summary>
+            <param name="msg">消息</param>
+            <param name="response">数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:SwaggerWithMiniProfiler.Model.ViewModel.ModelMessage`1.Fail(System.String)">
+            <summary>
+            返回失败
+            </summary>
+            <param name="msg">消息</param>
+            <returns></returns>
+        </member>
+        <member name="M:SwaggerWithMiniProfiler.Model.ViewModel.ModelMessage`1.Fail(System.String,`0)">
+            <summary>
+            返回失败
+            </summary>
+            <param name="msg">消息</param>
+            <param name="response">数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:SwaggerWithMiniProfiler.Model.ViewModel.ModelMessage`1.Message(System.Boolean,System.String,`0)">
+            <summary>
+            返回消息
+            </summary>
+            <param name="success">失败/成功</param>
+            <param name="msg">消息</param>
+            <param name="response">数据</param>
+            <returns></returns>
+        </member>
+        <member name="T:SwaggerWithMiniProfiler.Model.ViewModel.ModelPage`1">
+            <summary>
+            通用分页信息类
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.ViewModel.ModelPage`1.page">
+            <summary>
+            当前页标
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.ViewModel.ModelPage`1.pageCount">
+            <summary>
+            总页数
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.ViewModel.ModelPage`1.dataCount">
+            <summary>
+            数据总数
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.ViewModel.ModelPage`1.PageSize">
+            <summary>
+            每页大小
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.ViewModel.ModelPage`1.data">
+            <summary>
+            返回数据
+            </summary>
+        </member>
+        <member name="T:SwaggerWithMiniProfiler.Model.ViewModel.ModelPagination">
+            <summary>
+            所需分页参数
+            作者:胡丁文
+            时间:2020-4-3 20:31:26
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.ViewModel.ModelPagination.intPageIndex">
+            <summary>
+            当前页
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.ViewModel.ModelPagination.intPageSize">
+            <summary>
+            每页大小
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.ViewModel.ModelPagination.strOrderByFileds">
+            <summary>
+            排序字段(例如:id desc,time asc)
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.ViewModel.ModelPagination.conditions">
+            <summary>
+            查询条件( 例如:id = 1 and name = 小明)
+            </summary>
         </member>
         <member name="P:SwaggerWithMiniProfiler.Model.ViewModel.ModelTable`1.Code">
             <summary>

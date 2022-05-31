@@ -26,7 +26,7 @@ namespace SwaggerWithMiniProfiler.Repository.SqlSugarCore
             SqlSugarClient db = new SqlSugarClient(
                 new ConnectionConfig()
                 {
-                    ConnectionString = BaseDBConfig.ConnectionString,
+                    ConnectionString = BaseDBConnection.ConnectionString,
                     DbType = DbType.SqlServer,
                     IsAutoCloseConnection = true
                 });
