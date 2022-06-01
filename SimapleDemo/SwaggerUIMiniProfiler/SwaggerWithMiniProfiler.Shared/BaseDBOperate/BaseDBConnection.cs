@@ -14,8 +14,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SwaggerWithMiniProfiler.Shared.BaseDBOperate
 {
@@ -33,7 +31,7 @@ namespace SwaggerWithMiniProfiler.Shared.BaseDBOperate
         public static (List<MultiDBParams> multiDBAll, List<MultiDBParams> dbSubordinate) MultiConnectionString => MultiInitConnection();
 
         /// <summary>
-        /// 
+        /// 获取多数据连接字符串结果
         /// </summary>
         /// <returns></returns>
         private static (List<MultiDBParams>, List<MultiDBParams>) MultiInitConnection()
