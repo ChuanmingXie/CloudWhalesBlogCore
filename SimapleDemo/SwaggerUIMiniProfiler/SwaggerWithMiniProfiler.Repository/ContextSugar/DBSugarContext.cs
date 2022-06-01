@@ -94,6 +94,40 @@ namespace SwaggerWithMiniProfiler.Repository.ContextSugar
         }
 
         /// <summary>
+        /// 根据实体类生成数据库
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="isBackupTable">是否备份</param>
+        /// <param name="listEntity"></param>
+        public void CreateTableByEntity<T>(bool isBackupTable, params T[] listEntity) where T : class, new()
+        {
+            Type[] ListTypes = null;
+            if (listEntity != null)
+            {
+                ListTypes = new Type[ListTypes.Length];
+                for (int i = 0; i < ListTypes.Length; i++)
+                {
+                    T t = listEntity[i];
+                    ListTypes[i] = typeof(T);
+                }
+            }
+            CreateTableByEntity(isBackupTable, ListTypes);
+        }
+
+        /// <summary>
+        /// 根据实体类生成数据库
+        /// </summary>
+        /// <param name="isBackupTable">是否备份</param>
+        /// <param name="listEntity"></param>
+        public void CreateTableByEntity(bool isBackupTable, params Type[] listEntity)
+        {
+            if (isBackupTable)
+                _db.CodeFirst.BackupTable().InitTables(listEntity);
+            else
+                _db.CodeFirst.InitTables(listEntity);
+        }
+
+        /// <summary>
         /// 创建一个连接配置
         /// </summary>
         /// <param name="isAutoCloseConnection"></param>
