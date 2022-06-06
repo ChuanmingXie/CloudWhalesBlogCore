@@ -26,9 +26,9 @@ namespace SwaggerWithMiniProfiler.Repository.ContextSugar
 
         private static string _connectionString = DBParams.ConnectionString;
 
-        public static string _connectionID = DBParams.ConnectionID;
+        public static string ConnectionID = DBParams.ConnectionID;
         
-        private static DbType _dbType = (DbType)DBParams.DBType;
+        private static DbType _dbType = (DbType)DBParams.DbType;
 
         private SqlSugarScope _db;
 

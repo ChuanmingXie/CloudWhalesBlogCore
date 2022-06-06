@@ -12,9 +12,6 @@
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	</PropertyGroup>
 	<ItemGroup>
-		<Folder Include="Dto\" />
-	</ItemGroup>
-	<ItemGroup>
 	  <PackageReference Include="SqlSugarCore" Version="5.0.8.4" />
 	</ItemGroup>
 

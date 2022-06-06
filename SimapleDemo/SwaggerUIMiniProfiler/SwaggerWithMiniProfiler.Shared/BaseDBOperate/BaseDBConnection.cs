@@ -86,7 +86,7 @@ namespace SwaggerWithMiniProfiler.Shared.BaseDBOperate
         /// <param name="dbPatam"></param>
         private static void DBCustomConnection(MultiDBParams dbPatam)
         {
-            dbPatam.ConnectionString = dbPatam.DBType switch
+            dbPatam.ConnectionString = dbPatam.DbType switch
             {
                 BaseDBType.SQLite => $"DataSoucre=" + Path.Combine(Environment.CurrentDirectory, dbPatam.ConnectionString),
                 BaseDBType.MySQL => HandlerCustomConnection(@"C:\pro-file\db.connection.mysql.txt", dbPatam.ConnectionString),
@@ -116,5 +116,10 @@ namespace SwaggerWithMiniProfiler.Shared.BaseDBOperate
             }
             return connParams[connParams.Length - 1];
         }
+    }
+
+    public static class MainDb
+    {
+        public static string CurrentDbConnId = "1";
     }
 }

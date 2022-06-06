@@ -23,7 +23,6 @@
 
 	<ItemGroup>
 		<Folder Include="Controllers\Client\" />
-		<Folder Include="wwwroot\" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -60,6 +60,6 @@ namespace SwaggerWithMiniProfiler.Shared.BaseDBOperate
         /// <summary>
         /// 数据库类型
         /// </summary>
-        public BaseDBType DBType { get; set; }
+        public BaseDBType DbType { get; set; }
     }
 }

@@ -4,6 +4,46 @@
         <name>SwaggerWithMiniProfiler.Model</name>
     </assembly>
     <members>
+        <member name="T:SwaggerWithMiniProfiler.Model.DTO.ScheduleTaskDTO">
+            <summary>
+            调度任务触发器实体
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.DTO.ScheduleTaskDTO.JobId">
+            <summary>
+            任务ID
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.DTO.ScheduleTaskDTO.JobName">
+            <summary>
+            任务名称
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.DTO.ScheduleTaskDTO.JobGroup">
+            <summary>
+            任务分组
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.DTO.ScheduleTaskDTO.TriggerId">
+            <summary>
+            触发器ID
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.DTO.ScheduleTaskDTO.TriggerName">
+            <summary>
+            触发器名称
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.DTO.ScheduleTaskDTO.TriggerGroup">
+            <summary>
+            触发器分组
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.DTO.ScheduleTaskDTO.TriggerStatus">
+            <summary>
+            触发器状态
+            </summary>
+        </member>
         <member name="T:SwaggerWithMiniProfiler.Model.Entities.Advertisement">
             <summary>
             版面条幅
@@ -667,6 +707,91 @@
         <member name="P:SwaggerWithMiniProfiler.Model.Entities.Weather.Summary">
             <summary>
             概要
+            </summary>
+        </member>
+        <member name="T:SwaggerWithMiniProfiler.Model.Entities.ScheduleTask">
+            <summary>
+            计划任务表
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.Entities.ScheduleTask.Name">
+            <summary>
+            任务名称
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.Entities.ScheduleTask.JobGroup">
+            <summary>
+            任务分组
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.Entities.ScheduleTask.Cron">
+            <summary>
+            任务运行时间表达式
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.Entities.ScheduleTask.AssemblyName">
+            <summary>
+            任务所在DLL对应的程序集名称
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.Entities.ScheduleTask.ClassName">
+            <summary>
+            任务所在类
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.Entities.ScheduleTask.Remark">
+            <summary>
+            任务描述
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.Entities.ScheduleTask.RunTimes">
+            <summary>
+            执行次数
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.Entities.ScheduleTask.BeginTime">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.Entities.ScheduleTask.EndTime">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.Entities.ScheduleTask.TriggerType">
+            <summary>
+            触发器类型（0、simple 1、cron）
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.Entities.ScheduleTask.IntervalSecond">
+            <summary>
+            执行间隔时间, 秒为单位
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.Entities.ScheduleTask.CycleRunTimes">
+            <summary>
+            循环执行次数
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.Entities.ScheduleTask.IsStart">
+            <summary>
+            是否启动
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.Entities.ScheduleTask.JobParams">
+            <summary>
+            执行传参
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.Entities.ScheduleTask.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:SwaggerWithMiniProfiler.Model.Entities.ScheduleTask.Triggers">
+            <summary>
+            任务内存中的状态
             </summary>
         </member>
         <member name="T:SwaggerWithMiniProfiler.Model.Entities.SystemLogRecord">

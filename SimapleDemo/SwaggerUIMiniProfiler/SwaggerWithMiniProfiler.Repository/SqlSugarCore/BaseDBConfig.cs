@@ -21,7 +21,7 @@ namespace SwaggerWithMiniProfiler.Repository.SqlSugarCore
     /// <summary>
     /// 数据库基本操作
     /// </summary>
-    public class BaseDBConnection
+    public class BaseDBConfig
     {
         public static string ConnectionString = "Server=(localdb)\\mssqllocaldb;Database=PayAPI;Trusted_Connection=True;MultipleActiveResultSets=true";
 
