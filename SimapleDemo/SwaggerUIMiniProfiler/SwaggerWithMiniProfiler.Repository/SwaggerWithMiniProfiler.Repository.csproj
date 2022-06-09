@@ -5,11 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="IUnitOfWork\" />
-    <Folder Include="IRepository\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\SwaggerWithMiniProfiler.Shared\SwaggerWithMiniProfiler.Shared.csproj" />
   </ItemGroup>
 
