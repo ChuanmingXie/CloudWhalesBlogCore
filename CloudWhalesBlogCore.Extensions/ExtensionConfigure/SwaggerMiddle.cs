@@ -14,11 +14,8 @@ using CloudWhalesBlogCore.Shared.Common;
 using CloudWhalesBlogCore.Shared.NLogger;
 using Microsoft.AspNetCore.Builder;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static CloudWhalesBlogCore.Extensions.ExtensionServices.CustomApiVersion;
 
 namespace CloudWhalesBlogCore.Extensions.ExtensionConfigure

@@ -3,14 +3,10 @@ using CloudWhalesBlogCore.Extensions.ExtensionServices;
 using CloudWhalesBlogCore.Shared.Common;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
-using System;
-using System.IO;
 using System.Reflection;
 
 namespace CloudWhalesBlogCore.WebAPI
@@ -37,8 +33,8 @@ namespace CloudWhalesBlogCore.WebAPI
             services.AddMiniProfilerSetup();
             services.AddSwaggerSetup();
 
-            services.AddHttpContextAccessor();
-            //services.AddHttpContextSetup();
+            //services.AddHttpContextAccessor();
+            services.AddHttpContextSetup();
 
             services.Configure<KestrelServerOptions>(x => x.AllowSynchronousIO = true)
                     .Configure<IISServerOptions>(x => x.AllowSynchronousIO = true);
@@ -63,7 +59,6 @@ namespace CloudWhalesBlogCore.WebAPI
                 //app.UseHsts();
             }
             app.UseStaticFiles();
-            app.UseSwagger();
 
             app.UseSwaggerMiddle(
                 () => GetType().GetTypeInfo().Assembly

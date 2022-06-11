@@ -32,7 +32,7 @@ namespace CloudWhalesBlogCore.Extensions.ExtensionServices
                 services.AddMiniProfiler(options =>
                 {
                     options.RouteBasePath = "/profiler";
-                });
+                }).AddEntityFramework();
 
                 // 3.x使用MiniProfiler，必须要注册MemoryCache服务
                 // services.AddMiniProfiler(options =>

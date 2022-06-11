@@ -15,12 +15,9 @@ using CloudWhalesBlogCore.Shared.NLogger;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using static CloudWhalesBlogCore.Extensions.ExtensionServices.CustomApiVersion;
 
 namespace CloudWhalesBlogCore.Extensions.ExtensionServices
@@ -57,7 +54,8 @@ namespace CloudWhalesBlogCore.Extensions.ExtensionServices
                 {
                     var xmlPath = Path.Combine(basePath, "CloudWhales.API.xml");
                     c.IncludeXmlComments(xmlPath, true);
-                    var xmlModelPath = Path.Combine(basePath, "CloudWhales.Model.xml");//这个就是Model层的xml文件名
+                    //此处是同Model层的xml文件名
+                    var xmlModelPath = Path.Combine(basePath, "CloudWhales.Model.xml");
                     c.IncludeXmlComments(xmlModelPath);
                 }
                 catch (Exception ex)
