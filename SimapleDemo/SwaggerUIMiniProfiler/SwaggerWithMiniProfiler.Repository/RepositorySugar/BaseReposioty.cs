@@ -12,6 +12,9 @@
 ******************************************************************************/
 using SqlSugar;
 using SwaggerWithMiniProfiler.Model.ViewModel;
+using SwaggerWithMiniProfiler.Repository.UnitOfWork;
+using SwaggerWithMiniProfiler.Shared;
+using SwaggerWithMiniProfiler.Shared.BaseDBOperate;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -24,16 +27,44 @@ namespace SwaggerWithMiniProfiler.Repository.RepositorySugar
 {
     public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class, new()
     {
-        public ISqlSugarClient Db => throw new NotImplementedException();
+        private readonly IUnitOfWork _unitOfWork;
 
-        public BaseRepository()
+        private SqlSugarScope _dbBase;
+        public ISqlSugarClient Db
         {
-
+            get { return _dbBase; }
         }
 
-        public Task<int> Add(TEntity model)
+        private ISqlSugarClient _db
         {
-            throw new NotImplementedException();
+            get
+            {
+                if (HelperAppSettings.app(new string[] { "DataBaseSetting", "MultiDBEnabled" }).ObjectToBool())
+                {
+                    if (typeof(TEntity).GetTypeInfo().GetCustomAttributes(typeof(SugarTable), true).FirstOrDefault((x => x.GetType() == typeof(SugarTable))) is SugarTable sugarTable
+                        && !string.IsNullOrEmpty(sugarTable.TableDescription))
+                    {
+                        _dbBase.ChangeDatabase(sugarTable.TableDescription.ToLower());
+                    }
+                    else
+                    {
+                        _dbBase.ChangeDatabase(MainDb.CurrentDbConnId.ToLower());
+                    }
+                }
+                return _dbBase;
+            }
+        }
+
+        public BaseRepository(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+            _dbBase = unitOfWork.GetDBClient();
+        }
+
+        public async Task<int> Add(TEntity model)
+        {
+            var insert = _db.Insertable(model);
+            return await insert.ExecuteReturnIdentityAsync();
         }
 
         public Task<int> Add(List<TEntity> listEntity)
@@ -86,17 +117,27 @@ namespace SwaggerWithMiniProfiler.Repository.RepositorySugar
             throw new NotImplementedException();
         }
 
-        public Task<List<TEntity>> Query(Expression<Func<TEntity, bool>> whereExpression, string orderFileds, int topNum)
+        public Task<List<TEntity>> Query(
+            Expression<Func<TEntity, bool>> whereExpression,
+            string orderFileds,
+            int topNum)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<TEntity>> Query(Expression<Func<TEntity, bool>> whereExpression, string orderFileds, int pageIndex, int pageSize)
+        public Task<List<TEntity>> Query(
+            Expression<Func<TEntity, bool>> whereExpression,
+            string orderFileds,
+            int pageIndex,
+            int pageSize)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<TEntity>> Query(Expression<Func<TEntity, bool>> whereExpression, Expression<Func<TEntity, object>> orderFiledExpression, bool isAsc = true)
+        public Task<List<TEntity>> Query(
+            Expression<Func<TEntity, bool>> whereExpression,
+            Expression<Func<TEntity, object>> orderFiledExpression,
+            bool isAsc = true)
         {
             throw new NotImplementedException();
         }
@@ -106,27 +147,34 @@ namespace SwaggerWithMiniProfiler.Repository.RepositorySugar
             throw new NotImplementedException();
         }
 
-        public Task<List<TResult>> Query<TResult>(Expression<Func<TEntity, TResult>> expression, Expression<Func<TEntity, bool>> whereExpression, string orderFileds)
+        public Task<List<TResult>> Query<TResult>(
+            Expression<Func<TEntity, TResult>> expression,
+            Expression<Func<TEntity, bool>> whereExpression,
+            string orderFileds)
         {
             throw new NotImplementedException();
         }
 
-        public Task<TEntity> QueryById(object id)
+        public async Task<TEntity> QueryById(object id)
         {
-            throw new NotImplementedException();
+            return await _db.Queryable<TEntity>().In(id).SingleAsync();
         }
 
-        public Task<TEntity> QueryById(object id, bool addInCahce = false)
+        public async Task<TEntity> QueryById(object id, bool addInCahce = false)
         {
-            throw new NotImplementedException();
+            return await _db.Queryable<TEntity>().WithCacheIF(addInCahce).In(id).SingleAsync();
         }
 
-        public Task<List<TEntity>> QueryByIds(object[] ids)
+        public async Task<List<TEntity>> QueryByIds(object[] ids)
         {
-            throw new NotImplementedException();
+            return await _db.Queryable<TEntity>().In(ids).ToListAsync();
         }
 
-        public Task<ModelPage<TEntity>> QueryPage(Expression<Func<TEntity, bool>> whereExpression, string orderFileds = null, int pageIndex = 1, int pageSize = 20)
+        public Task<ModelPage<TEntity>> QueryPage(
+            Expression<Func<TEntity, bool>> whereExpression,
+            string orderFileds = null,
+            int pageIndex = 1,
+            int pageSize = 20)
         {
             throw new NotImplementedException();
         }
@@ -141,17 +189,33 @@ namespace SwaggerWithMiniProfiler.Repository.RepositorySugar
             throw new NotImplementedException();
         }
 
-        public Task<ModelPage<TResult>> QueryTabsPage<T1, T2, TResult>(Expression<Func<T1, T2, object[]>> joinExpression, Expression<Func<T1, T2, TResult>> selectExpression, Expression<Func<TResult, bool>> whereExpression, string orderFileds, int pageIndex = 1, int pageSize = 20)
+        public Task<ModelPage<TResult>> QueryTabsPage<T1, T2, TResult>(
+            Expression<Func<T1, T2, object[]>> joinExpression,
+            Expression<Func<T1, T2, TResult>> selectExpression,
+            Expression<Func<TResult, bool>> whereExpression,
+            string orderFileds,
+            int pageIndex = 1,
+            int pageSize = 20)
         {
             throw new NotImplementedException();
         }
 
-        public Task<ModelPage<TResult>> QueryTabsPage<T1, T2, TResult>(Expression<Func<T1, T2, object[]>> joinExpression, Expression<Func<T1, T2, TResult>> selectExpression, Expression<Func<T1, object>> groupExpression, Expression<Func<TResult, bool>> whereExpression, string orderFileds, int pageIndex = 1, int pageSize = 20)
+        public Task<ModelPage<TResult>> QueryTabsPage<T1, T2, TResult>(
+            Expression<Func<T1, T2, object[]>> joinExpression,
+            Expression<Func<T1, T2, TResult>> selectExpression,
+            Expression<Func<T1, object>> groupExpression,
+            Expression<Func<TResult, bool>> whereExpression,
+            string orderFileds,
+            int pageIndex = 1,
+            int pageSize = 20)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<TResult>> QueryUnion<T1, T2, T3, TResult>(Expression<Func<T1, T2, T3, object[]>> joinExpression, Expression<Func<T1, T2, T3, TResult>> selectExpression, Expression<Func<T1, T2, T3, bool>> whereExpression = null) where T1 : class, new()
+        public Task<List<TResult>> QueryUnion<T1, T2, T3, TResult>(
+            Expression<Func<T1, T2, T3, object[]>> joinExpression,
+            Expression<Func<T1, T2, T3, TResult>> selectExpression,
+            Expression<Func<T1, T2, T3, bool>> whereExpression = null) where T1 : class, new()
         {
             throw new NotImplementedException();
         }
