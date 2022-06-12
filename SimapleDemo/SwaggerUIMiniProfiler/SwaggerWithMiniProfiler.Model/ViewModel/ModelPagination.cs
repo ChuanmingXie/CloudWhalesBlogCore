@@ -6,26 +6,27 @@ namespace SwaggerWithMiniProfiler.Model.ViewModel
 {
     /// <summary>
     /// 所需分页参数
-    /// 作者:胡丁文
-    /// 时间:2020-4-3 20:31:26
     /// </summary>
     public class ModelPagination
     {
         /// <summary>
         /// 当前页
         /// </summary>
-        public int intPageIndex { get; set; } = 1;
+        public int PageIndex { get; set; } = 1;
+
         /// <summary>
         /// 每页大小
         /// </summary>
-        public int intPageSize { get; set; } = 10;
+        public int PageSize { get; set; } = 10;
+
         /// <summary>
         /// 排序字段(例如:id desc,time asc)
         /// </summary>
-        public string strOrderByFileds { get; set; }
+        public string OrderByFileds { get; set; }
+
         /// <summary>
         /// 查询条件( 例如:id = 1 and name = 小明)
         /// </summary>
-        public string conditions { get; set; }
+        public string Conditions { get; set; }
     }
 }

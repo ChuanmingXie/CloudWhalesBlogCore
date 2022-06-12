@@ -19,7 +19,7 @@ namespace SwaggerWithMiniProfiler.Model.Entities
     /// <summary>
     /// 博客评论
     /// </summary>
-    class BlogComment:BaseEntity<int>
+    public class BlogComment:BaseEntity<int>
     {
 
         /// <summary>

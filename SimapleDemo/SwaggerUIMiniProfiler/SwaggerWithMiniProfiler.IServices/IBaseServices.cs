@@ -11,6 +11,7 @@
 *Copyright @ chuanming 2022. All rights reserved
 ******************************************************************************/
 using SqlSugar;
+using SwaggerWithMiniProfiler.Model.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -73,6 +74,18 @@ namespace SwaggerWithMiniProfiler.IServices
         Task<DataTable> QueryTable(string sqlStr, SugarParameter[] parameters = null);
 
 
+        Task<ModelPage<TEntity>> QueryPage(
+            Expression<Func<TEntity, bool>> whereExpression, 
+            string orderByFiles = null, 
+            int pageIndex = 1,
+            int pageSize = 20);
+
+        Task<ModelPage<TEntity>> QueryPage(ModelPagination modelPagination);
+
+        Task<List<TResult>> QueryUnion<T1, T2, T3, TResult>(
+            Expression<Func<T1,T2,T3,object[]>> joinExpression,
+            Expression<Func<T1,T2,T3,TResult>> selectExpression,
+            Expression<Func<T1,T2,T3,bool>> whereExpression=null) where T1:class,new();
 
 
     }
