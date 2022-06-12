@@ -10,15 +10,15 @@ namespace SwaggerWithMiniProfiler.Model.ViewModel
         /// <summary>
         /// 当前页标
         /// </summary>
-        public int page { get; set; } = 1;
+        public int Page { get; set; } = 1;
         /// <summary>
         /// 总页数
         /// </summary>
-        public int pageCount { get; set; } = 6;
+        public int PageCount { get; set; } = 6;
         /// <summary>
         /// 数据总数
         /// </summary>
-        public int dataCount { get; set; } = 0;
+        public int DataCount { get; set; } = 0;
         /// <summary>
         /// 每页大小
         /// </summary>
@@ -26,7 +26,7 @@ namespace SwaggerWithMiniProfiler.Model.ViewModel
         /// <summary>
         /// 返回数据
         /// </summary>
-        public List<T> data { get; set; }
+        public List<T> Data { get; set; }
 
     }
 
