@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CloudWhalesBlogCore.Model</name>
+    </assembly>
+    <members>
+        <member name="T:CloudWhalesBlogCore.Model.DataModel.BaseEntity">
+            <summary>
+            实体基类
+            </summary>
+        </member>
+        <member name="P:CloudWhalesBlogCore.Model.DataModel.HouseParam.BuildingNum">
+            <summary>
+            大楼编号
+            </summary>
+            
+        </member>
+        <member name="P:CloudWhalesBlogCore.Model.DataModel.HouseParam.RoomNum">
+            <summary>
+            户号
+            </summary>
+        </member>
+        <member name="P:CloudWhalesBlogCore.Model.DataModel.HouseParam.MasterRoom">
+            <summary>
+            主卧拆除面积
+            </summary>
+        </member>
+        <member name="P:CloudWhalesBlogCore.Model.DataModel.HouseParam.SecondRoom">
+            <summary>
+            次卧拆除面积
+            </summary>
+        </member>
+        <member name="P:CloudWhalesBlogCore.Model.DataModel.HouseParam.StudyRoom">
+            <summary>
+            书房拆除面积
+            </summary>
+        </member>
+        <member name="P:CloudWhalesBlogCore.Model.DataModel.HouseParam.DemolitionArea">
+            <summary>
+            户内拆除面积小计
+            </summary>
+        </member>
+        <member name="P:CloudWhalesBlogCore.Model.DataModel.HouseParam.StatusPhotosJoin">
+            <summary>
+            现场拆除状态图片列表(以此为主，次，书)
+            </summary>
+        </member>
+        <member name="T:CloudWhalesBlogCore.Model.DataModel.Pizza">
+            <summary>
+            pizza实体模型
+            </summary>
+        </member>
+    </members>
+</doc>
